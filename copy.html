@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/editor.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/fabric.js"></script>
+<script>
+var myImageSRC;
+const onClick = (event) => {
+  console.log(event.srcElement.id);
+  myImageSRC = document.getElementById(event.srcElement.id).src
+  console.log(myImageSRC);
+}
+function updateDiv() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("fooBar").innerHTML =
+      this.responseText;
+	  var descendents = fooBar.getElementsByTagName('*');
+	 
+    var i, e, d;
+for (i = 0; i < descendents.length; ++i) {
+    e = descendents[i];
+   e.addEventListener('mousedown', onClick);
+}
+
+
+
+
+
+	 
+    }
+  };
+  xhttp.open("GET", "updateDiv.php", true);
+  xhttp.send();
+}
+</script>
+
+<title>Editor</title>
+</head>
+
+
+
+<body onload="ifm.src='upload.html'">
+
+<div class="toolbar" id="toolbar">
+<div class="main-buttons">
+<!-- aria-label="..." on the control -->
+<div class="tooltip">
+<span class="tooltiptext">Add Text</span>
+
+<button id="text1" onclick="addtext(canvas)">
+<img src="Icons/fonts.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Add Textarea</span>
+<button id="textarea1" onclick="addtextarea(canvas)">
+<img src="Icons/textarea-t.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Add Objects</span>
+
+<button id="shapes1" onclick="openshapespop()">
+<img src="Icons/bounding-box-circles.svg" alt="Bootstrap"  width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Delete</span>
+<button id="delete1" onclick="deleteSelectedObjectsFromCanvas()">
+<img src="Icons/trash.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Group</span>
+<button id="group1" onclick="groupObjects()">
+<img src="Icons/group-43.svg" alt="Bootstrap" width="39" height="39">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Ungroup</span>
+<button id="ungroup1" onclick="ungroupObjects()">
+<img src="Icons/ungroup.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Bring to Front</span>
+<button id="front1" onclick="sendSelectedObjectforward()">
+<img src="Icons/front.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Sent Back</span>
+<button id="back1" onclick="sendSelectedObjectBack()">
+<img src="Icons/back.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+</div>
+
+<div class="extended-buttons">
+<div class="tooltip">
+<span class="tooltiptext">Upload Image</span>
+<button id="upload1">
+<div class="upload-btn-wrapper">
+<img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+<Input id="myImg" type="file" accept="Image/">
+</div>
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Save</span>
+<button id="save1">
+<a id="lnkDownload" href="#">
+<img src="Icons/download.svg" alt="Bootstrap" width="32" height="32">
+</a>
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Canvas Settings</span>
+<button id="setting1" onclick="openForm()">
+<img src="Icons/gear.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Restore Canvas</span>
+<button id="clear1" onclick="restoreCanvas(canvas, svgState, bgUrl)">
+<img src="Icons/arrow-counterclockwise.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<div class="tooltip">
+<span class="tooltiptext">Clear Canvas</span>
+<button id="clear1" onclick="clearCanvas(canvas, svgState)">
+<img src="Icons/x-lg.svg" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+</div>
+</div>
+
+<div class="zoh0" style="display:flex; flex-direction: row; margin-top: 10px;">
+
+<div class="zoh1">
+</div>
+
+<div class="zoh2" id="userInputWindow">
+<div id="strokeValue">
+</div>
+<canvas id="zbcanvas" style="border: 1px solid #e1e1e1; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);" ></canvas>
+</div>
+
+<div class="zoh3">
+<div>
+<h5 style="margin-block-start: 0.5em; margin-block-end: 0.5em; font-size: 36px;">Images</h5>
+<div class="sidebar">
+<div id="fooBar" class="item1">
+</div>
+</div>
+<iframe id="ifm" style="height: 100px; width:270px; border: none;" title="Iframe Example"></iframe>
+</div>
+</div>
+</div>
+
+<div id="mydiv" class="zohpopup">
+<button class="increase" onclick="closediv()" style="margin-left: 200px;margin-top: 10px;">X</button>
+<h1>Text Properties</h1>
+<hr>
+	 
+<div id="text-controls-additional" class="zohinpop">
+		<div class="input-container">
+          <label for="text-lines-bg-color">Text Color:</label>
+		  <div class="custom-number-input">
+		 <input id="colorPicker" value="" data-jscolor="{}"  id="text-color" size="10" style="border-radius: 4px;">
+		  </div>
+        </div>
+<div class="input-container">
+<div>
+  <input type='checkbox' name='fonttype' id="text-cmd-bold">
+        Bold</input>
+     
+      <input type='checkbox' name='fonttype' id="text-cmd-italic">
+        Italic</input>
+     
+      <input type='checkbox' name='fonttype'  id="text-cmd-underline" >
+        Underline</input>
+      
+      <input type='checkbox' name='fonttype'  id="text-cmd-linethrough">
+        Linethrough</input>
+     
+      <input type='checkbox' name='fonttype'  id="text-cmd-overline" >
+        Overline</input>
+</div>
+</div>
+
+<div class="input-container">
+      <label for="font-family" style="display:inline-block">Font family:</label>
+      <select id="font-family">
+        <option value="arial">Arial</option>
+        <option value="helvetica" selected>Helvetica</option>
+        <option value="myriad pro">Myriad Pro</option>
+        <option value="delicious">Delicious</option>
+        <option value="verdana">Verdana</option>
+        <option value="georgia">Georgia</option>
+        <option value="courier">Courier</option>
+        <option value="comic sans ms">Comic Sans MS</option>
+        <option value="impact">Impact</option>
+      </select>
+	  </div>
+	  
+<div class="input-container">
+	 <label for="text-align" style="display:inline-block">Text align:</label>
+      <select id="text-align">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+        <option value="justify">Justify</option>
+      </select>
+      </div>
+
+
+       <div class="input-container">
+          <label>Font Size</label>
+          <div class="custom-number-input">
+          <button class="decrease" onclick="txtwidminus(this.val)">-</button>
+          <input  min="1" value="1" id="text-font-size">
+          <button class="increase" onclick="txtwidplus(this.val)">+</button>
+          </div> 
+		  </div>
+		
+
+		<div class="input-container">
+          <label for="text-lines-bg-color">back Color:</label>
+		  <div class="custom-number-input">
+		 <input id="text-lines-bg-color" value="" data-jscolor="{}"  id="text-color" size="10" style="border-radius: 4px;">
+		  </div>
+        </div>
+
+<div class="input-container">
+          <label for="text-lines-bg-color">stroke Color:</label>
+		  <div class="custom-number-input">
+		 <input id="text-stroke-color" value="" data-jscolor="{}"  id="text-color" size="10" style="border-radius: 4px;">
+		  </div>
+        </div>
+		
+<div class="input-container">
+          <label>Stroke Width</label>
+          <div class="custom-number-input">
+          <button class="decrease" onclick="txtstrokeminus(this.val)">-</button>
+          <input  min="1" value="1" id="text-stroke-width">
+          <button class="increase" onclick="txtstrokeplus(this.val)">+</button>
+          </div>
+        </div>
+		<hr>
+</div>	
+</div>
+
+<div class="canpropopup" id="myform">
+<button class="increase" onclick="closeForm()" style="margin-left: 200px;margin-top: 10px;">X</button>
+    <h1>Canvas Properties</h1>
+	<hr>
+	
+<div class="input-container">
+          <label>Canvas Width</label>
+          <div class="custom-number-input">
+          <button class="decrease" onclick="substcan(this.val)">-</button>
+          <input  min="1" placeholder="660px" value="660" id="enterCanvasWidth">
+          <button class="increase" onclick="additioncan(this.val)">+</button>
+          </div>
+        </div>
+		
+		<div class="input-container">
+          <label>Canvas Height</label>
+          <div class="custom-number-input">
+          <button class="decrease" onclick="substcanhie(this.val)">-</button>
+          <input  min="1" placeholder="520px" value="520" id="enterCanvasHeight">
+          <button class="increase" onclick="additioncanhie(this.val)">+</button>
+          </div>
+        </div>
+		
+		<div class="input-container">
+          <label for="text-lines-bg-color">Background Color:</label>
+		  <div class="custom-number-input">
+		 <input id="colorPicker2" value="" data-jscolor="{}"  id="text-color" size="10" style="border-radius: 4px;">
+		  </div>
+        </div>
+		
+		<div class="input-container">
+		<label for="text-lines-bg-color">Background Image:</label>
+		<button id="upload1">
+        <div class="upload-btn-wrapper">
+        <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+       <Input id="file2" type="file" accept="Image/">
+        </div>
+         </button>
+		 </div>
+		 <hr>
+</div>
+
+<div id="shapespop" class="shapepopup">
+<button class="increase" onclick="closeshapespop()" style="margin-left: 200px;margin-top: 10px;">X</button>
+<h1>Objects</h1>
+<hr>
+<div class="shape">
+<button class="add_shape" id="circle"  data-rel="circle">
+<img src="Icons/circle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button class="add_shape" id="recteangle"  data-rel="rectangle"> 
+<img src="Icons/square.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button class="add_shape" id="text1" data-rel="ellipse">
+<img src="Icons/ellipse.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button class="add_shape" id="triangle" data-rel="triangle">
+<img src="Icons/triangle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button class="add_shape" id="hexagon" data-rel="hexagon">
+<img src="Icons/hexagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button  class="add_shape" id="star" data-rel="star">
+<img src="Icons/star.svg" draggable="false"alt="Bootstrap" width="32" height="32">
+</button>
+<button  class="add_shape" id="pentagon" data-rel="pentagon">
+<img src="Icons/pentagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button  class="add_shape" id="diamond" data-rel="diamond">
+<img src="Icons/diamond.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+<button class="add_shape" id="line" data-rel="line">
+<img src="Icons/line.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+</button>
+</div>
+<hr>
+<h1>Objects Settings</h1>
+      <div>
+        
+		<div class="input-container">
+          <label>Stroke Width</label>
+          <div class="custom-number-input" bind-value-to="strokeWidth">
+          
+          <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
+          
+          </div>
+        </div>
+        <div class="input-container">
+          <label for="text-lines-bg-color">Stroke Color:</label>
+		  <div class="custom-number-input">
+		 <input id="storkeColor" value="" data-jscolor="{}" size="10" style="border-radius: 4px;">
+		  </div>
+        </div>
+        <div class="input-container">
+          <label>Color</label>
+		  <div class="custom-number-input">
+         <input id="colorPicker1" value="#000000" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
+		  </div>
+		 </div>
+      </div>
+	</div>
+<div>
+</div>
+<script src="js/jscolor.js"></script>
+<script src="js/jscolor.min.js"></script>
+<script src="js/editor-pop.js"></script>
+<script src="js/editor.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div style="text-align: right;position: fixed;z-index:9999999;bottom: 0;width: auto;right: 1%;cursor: pointer;line-height: 0;display:block !important;"><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png" alt="www.000webhost.com"></a></div><script>function getCookie(t){for(var e=t+"=",n=decodeURIComponent(document.cookie).split(";"),o=0;o<n.length;o++){for(var i=n[o];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(e))return i.substring(e.length,i.length)}return""}getCookie("hostinger")&&(document.cookie="hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;",location.reload());var wordpressAdminBody=document.getElementsByClassName("wp-admin")[0],notification=document.getElementsByClassName("notice notice-success is-dismissible"),hostingerLogo=document.getElementsByClassName("hlogo"),mainContent=document.getElementsByClassName("notice_content")[0];if(null!=wordpressAdminBody&¬ification.length>0&&null!=mainContent && new Date().toISOString().slice(0, 10) > '2023-10-29' && new Date().toISOString().slice(0, 10) < '2023-11-27'){var googleFont=document.createElement("link");googleFontHref=document.createAttribute("href"),googleFontRel=document.createAttribute("rel"),googleFontHref.value="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700",googleFontRel.value="stylesheet",googleFont.setAttributeNode(googleFontHref),googleFont.setAttributeNode(googleFontRel);var css="@media only screen and (max-width: 576px) {#main_content {max-width: 320px !important;} #main_content h1 {font-size: 30px !important;} #main_content h2 {font-size: 40px !important; margin: 20px 0 !important;} #main_content p {font-size: 14px !important;} #main_content .content-wrapper {text-align: center !important;}} @media only screen and (max-width: 781px) {#main_content {margin: auto; justify-content: center; max-width: 445px;}} @media only screen and (max-width: 1325px) {.web-hosting-90-off-image-wrapper {position: absolute; max-width: 95% !important;} .notice_content {justify-content: center;} .web-hosting-90-off-image {opacity: 0.3;}} @media only screen and (min-width: 769px) {.notice_content {justify-content: space-between;} #main_content {margin-left: 5%; max-width: 445px;} .web-hosting-90-off-image-wrapper {position: absolute; display: flex; justify-content: center; width: 100%; }} .web-hosting-90-off-image {max-width: 90%;} .content-wrapper {min-height: 454px; display: flex; flex-direction: column; justify-content: center; z-index: 5} .notice_content {display: flex; align-items: center;} * {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .upgrade_button_red_sale{box-shadow: 0 2px 4px 0 rgba(255, 69, 70, 0.2); max-width: 350px; border: 0; border-radius: 3px; background-color: #ff4546 !important; padding: 15px 55px !important; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 600; color: #ffffff;} .upgrade_button_red_sale:hover{color: #ffffff !important; background: #d10303 !important;}",style=document.createElement("style"),sheet=window.document.styleSheets[0];style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName("head")[0].appendChild(style),document.getElementsByTagName("head")[0].appendChild(googleFont);var button=document.getElementsByClassName("upgrade_button_red")[0],link=button.parentElement;link.setAttribute("href","https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),link.innerHTML='<button class="upgrade_button_red_sale">Claim deal</button>',(notification=notification[0]).setAttribute("style","padding-bottom: 0; padding-top: 5px; background-color: #040713; background-size: cover; background-repeat: no-repeat; color: #ffffff; border-left-color: #040713;"),notification.className="notice notice-error is-dismissible";var mainContentHolder=document.getElementById("main_content");mainContentHolder.setAttribute("style","padding: 0;"),hostingerLogo[0].remove();var h1Tag=notification.getElementsByTagName("H1")[0];h1Tag.className="000-h1",h1Tag.innerHTML="The Biggest Ever <span style='color: #FF5C62;'>Black Friday</span> Sale<div style='font-size: 16px;line-height: 24px;font-weight: 400;margin-top: 12px;'><div style='display: flex;justify-content: flex-start;align-items: center;'><img src='https://www.000webhost.com/static/default.000webhost.com/images/generic/green-check-mark.png' alt='' style='margin-right: 10px; width: 20px;'>Managed WordPress Hosting</div><div style='display: flex;justify-content: flex-start;align-items: center;'><img src='https://www.000webhost.com/static/default.000webhost.com/images/generic/green-check-mark.png' alt='' style='margin-right: 10px; width: 20px;'>WordPress Acceleration</div><div style='display: flex;justify-content: flex-start;align-items: center;'><img src='https://www.000webhost.com/static/default.000webhost.com/images/generic/green-check-mark.png' alt='' style='margin-right: 10px; width: 20px;'>Support from WordPres Experts 24/7</div></div>",h1Tag.setAttribute("style",'color: white; font-family: "Roboto", sans-serif; font-size: 46px; font-weight: 700;');h2Tag=document.createElement("H2");h2Tag.innerHTML="<span style='font-size: 20px'>$</span>2.49<span style='font-size: 20px'>/mo</span>",h2Tag.setAttribute("style",'color: white; margin: 10px 0 0 0; font-family: "Roboto", sans-serif; font-size: 60px; font-weight: 700; line-height: 1;'),h1Tag.parentNode.insertBefore(h2Tag,h1Tag.nextSibling);var paragraph=notification.getElementsByTagName("p")[0];paragraph.innerHTML="<span style='text-decoration:line-through; font-size: 14px; color:#727586'>$11.99.mo</span><br>+ 2 Months Free",paragraph.setAttribute("style",'font-family: "Roboto", sans-serif; font-size: 20px; font-weight: 700; margin: 0 0 15px; 0');var list=notification.getElementsByTagName("UL")[0];list.remove();var org_html=mainContent.innerHTML,new_html='<div class="content-wrapper">'+mainContent.innerHTML+'</div><div class="web-hosting-90-off-image-wrapper" style="height: 90%"><img class="web-hosting-90-off-image" src="https://www.000webhost.com/static/default.000webhost.com/images/sales/bf2023/hero.png"></div>';mainContent.innerHTML=new_html;var saleImage=mainContent.getElementsByClassName("web-hosting-90-off-image")[0]}else if(null!=wordpressAdminBody&¬ification.length>0&&null!=mainContent){var bulletPoints = mainContent.getElementsByTagName('li');var replacement=['Increased performance (up to 5x faster) - Thanks to Hostinger’s WordPress Acceleration and Caching solutions','WordPress AI tools - Creating a new website has never been easier','Weekly or daily backups - Your data will always be safe','Fast and dedicated 24/7 support - Ready to help you','Migration of your current WordPress sites to Hostinger is automatic and free!','Try Premium Web Hosting now - starting from $1.99/mo'];for (var i=0;i<bulletPoints.length;i++){bulletPoints[i].innerHTML = replacement[i];}}</script></body>
+</html>

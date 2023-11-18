@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Certificate Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js" integrity="sha512-CeIsOAsgJnmevfCi2C7Zsyy6bQKi43utIjdA87Q0ZY84oDqnI0uwfM9+bKiIkI75lUeI00WG/+uJzOmuHlesMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  
+    <form >
+        <label for="name">Height: </label><br />
+        <input id="height" type="number" name="" id="">
+        <br>
+        <label for="name">Width: </label><br />
+        <input id="width" type="number" name="" id="">
+        <br>
+        <label for="name">Color: </label><br />
+        <input type="color" name="" id="color">
+        <button type="button" onclick="getValue()">Submit</button>
+    </form>
+    <form action=""     id="uploadForm" enctype="multipart/form-data">
+        <label for="image">Upload Image</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <input type="submit" value="Upload">
+    </form>
+  <hr>
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <!-- <script>
+    // Create a new Fabric.js canvas
+var canvas = new fabric.Canvas('canvas');
+    // Function to create the rectangle based on user input values
+    function createRectangle() {
+        var heightCanvas = parseFloat(document.getElementById('height').value);
+        var widthCanvas = parseFloat(document.getElementById('width').value);
+
+        // Create a rectangle object
+        var rectangle = new fabric.Rect({
+            left: 100,
+            top: 100,
+            width: widthCanvas,
+            height: heightCanvas,
+            fill: 'purple',
+            angle: 45
+        });
+
+        // Add the rectangle to the canvas
+        canvas.add(rectangle);
+    }
+
+  </script> -->
+
+  <script src="script.js"></script>
+</body>
+</html>
