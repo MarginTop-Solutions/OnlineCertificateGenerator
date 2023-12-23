@@ -1,11 +1,15 @@
 .header{
     display:flex;
     flex-direction: row;
-    background-color: #f2f2f2;
+    background-color: #f9d561;
     width: 100%;
+    border: 1px solid green;
     height: 80px;
-    border: 1px solid #e1e1e1;
+  
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ body{
+  background-color: #d1c4c4;
  }
  
  .side1{
@@ -16,6 +20,7 @@
     align-items: center;
      margin-left: 100px;
      width: 5%;
+     border: 1px solid green;
      
  }
  .side3{
@@ -23,6 +28,9 @@
      align-items: center;
      margin-top: 13px;
      margin-left: 160px;
+     border: 1px solid green;
+    
+
      
  }
   
@@ -30,31 +38,42 @@
     display:flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid green;
+    border: 1px solid rgb(46, 17, 208);
     justify-content: space-between;
     margin-top: 10px;
     width: 100%;
+   
     height: 100%;
+    background-color: #2d3d55;
+    border: 1px solid green;
+
 
  }
- 
+ .Footer{
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+ }
  div.zoh1 {
-   background-color: white;
-   width: 300px;
+   /* background-color: rgb(190, 100, 100); */
+   /* width: 900px; */
    margin: 10px;
-   text-align: center;
-   left: 330px;
+   /* text-align: center; */
+   /* left: 330px; */
    height: 520px;
    border: 1px solid #e1e1e1;
+   
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    opacity: 0;
  }
  
  div.zoh2 {
-   width: 700px;
+   width: 1000px;
    margin: 10px;
-   text-align: center;
-   left: 330px;
+   /* text-align: center; */
+   /* left: 30px; */
+   /* border: 1px solid green; */
    height: 520px;
    
  }
@@ -72,7 +91,7 @@
  }
  div.shape{
      line-height: 3.2;
-     background-color: #f2f2f2;
+     background-color: #3ea1ac;
      /* display: flex; */
      justify-content: space-between;
      align-items: center;
@@ -83,9 +102,11 @@
  }
  .shape button {
    width: 64px;
+   border-radius: 10px;
    height: 54px;
    opacity: .55;
    clear: both;
+   margin: 5px;
    border: 0;
    border-radius: unset;
    outline: none;
@@ -214,6 +235,7 @@
      left: 20px;
      border: 3px solid #f1f1f1;
      box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+     
      top: 177px;
      width: 250px;
      height: 520px;
@@ -333,7 +355,7 @@
  
  .toolbar {
    line-height: 0;
-   background-color: #f2f2f2;
+   background-color: #50985b;
    box-shadow: 0 0 3px 0 rgba(50, 50, 50, .25);
    display: flex;
    justify-content: space-between;
@@ -347,7 +369,7 @@
    opacity: .55;
    clear: both;
    border: 0;
-   border-radius: unset;
+   border-radius: 10px;
    outline: none;
  }
  
@@ -365,7 +387,7 @@
    height: 30px;
  }
  .toolpanel {
-   background-color: #f9f9f9;
+   background-color: #598d1e;
    width: 300px;
    top: 0;
    left: 0;
@@ -390,7 +412,7 @@
  }
  div.shapepopup {
      display: block;
-     background-color: #f2f2f2;
+     background-color: #3ea1ac;
      width: 250px;
      margin: 10px;
      text-align: center;
@@ -403,7 +425,7 @@
      transition: all .4s;
      box-sizing: border-box;
      font-size: 13px;
-     color: #777;
+     color: #e01717;
      position: absolute;
  }
  .shapepopup .content {
@@ -432,7 +454,7 @@
    right: -42px;
    width: 40px;
    height: 80px;
-   background: #f9f9f9;
+   background-color: #3ea1ac;
    border: 1px solid #ddd;
    border-top-right-radius: 3px;
    border-bottom-right-radius: 3px;
@@ -472,12 +494,12 @@
  }
  
  .shapepopup .input-container .custom-number-input {
-   background: #ebebeb;
-   display: flex;
+  background-color: #3ea1ac;
+  display: flex;
    align-items: center;
    padding: 1px;
    height: 30px;
-   background-color: #e4e4e4;
+   background-color: #3ea1ac;
    border-radius: 6px;
    text-align: center;
  }
@@ -485,7 +507,7 @@
  .shapepopup .input-container .custom-number-input button {
    width: 36px !important;
    height: 30px !important;
-   background-color: #fff;
+   background-color: #3ea1ac;
    background-clip: padding-box;
    border-radius: 6px;
    color: #333;
@@ -513,7 +535,7 @@
  
  div.zohpopup{
      display: none;
-     background-color: #f2f2f2;
+     background-color: #2ea3b0;
      width: 250px;
      margin: 10px;
      text-align: center;
@@ -525,8 +547,8 @@
      border: 1px solid #ddd;
      transition: all .4s;
      box-sizing: border-box;
-     font-size: 13px;
-     color: #777;
+     font-size: 14px;
+     color: #ca0000;
      position: absolute;
  }
  
@@ -545,8 +567,8 @@
    margin: 0;
    padding-bottom: 10px;
    width: 100%;
-   border-bottom: 1px solid #ddd;
-   color: #333;
+   border-bottom: 1px solid #448ba7;
+   color: #dd0606;
    text-transform: uppercase;
  }
  
@@ -556,7 +578,7 @@
    right: -42px;
    width: 40px;
    height: 80px;
-   background: #f9f9f9;
+   background-color: #3ea1ac;
    border: 1px solid #ddd;
    border-top-right-radius: 3px;
    border-bottom-right-radius: 3px;
@@ -600,7 +622,7 @@
    align-items: center;
    padding: 1px;
    height: 30px;
-   background-color: #e4e4e4;
+   background-color: #edf0ee;
    border-radius: 6px;
    text-align: center;
  }
@@ -648,7 +670,8 @@
      transition: all .4s;
      box-sizing: border-box;
      font-size: 13px;
-     color: #777;
+     background-color: #8ccabf;
+     color: #bd2d2d;
      position: absolute;
  }
  
@@ -668,7 +691,7 @@
    padding-bottom: 10px;
    width: 100%;
    border-bottom: 1px solid #ddd;
-   color: #333;
+   color: #ff0000;
    text-transform: uppercase;
  }
  
@@ -678,8 +701,8 @@
    right: -42px;
    width: 40px;
    height: 80px;
-   background: #f9f9f9;
-   border: 1px solid #ddd;
+   background: #661818;
+   border: 1px solid #bc2f2f;
    border-top-right-radius: 3px;
    border-bottom-right-radius: 3px;
    cursor: pointer;
@@ -707,7 +730,7 @@
  .canpropopup .input-container select {
    width: 50%;
    height: 29px;
-   border: 1px solid #ccc;
+   border: 1px solid #b14141;
    border-radius: 5px;
    outline: none;
  }
@@ -717,12 +740,12 @@
  }
  
  .canpropopup .input-container .custom-number-input {
-   background: #ebebeb;
+   background: #a56f6f;
    display: flex;
    align-items: center;
    padding: 1px;
    height: 30px;
-   background-color: #e4e4e4;
+   /* background-color: #e4e4e4; */
    border-radius: 6px;
    text-align: center;
  }
@@ -730,7 +753,7 @@
  .canpropopup .input-container .custom-number-input button {
    width: 36px !important;
    height: 30px !important;
-   background-color: #fff;
+   background-color: #c25555;
    background-clip: padding-box;
    border-radius: 6px;
    color: #333;
@@ -763,7 +786,7 @@
  .tooltip .tooltiptext {
    visibility: hidden;
    width: 120px;
-   background-color: white;
+   background-color: rgb(168, 89, 89);
    color: black;
    text-align: center;
    border-radius: 6px;

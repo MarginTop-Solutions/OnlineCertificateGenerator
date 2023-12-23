@@ -40,14 +40,23 @@ const toggleMode = _0x2c0f14 => {
   console.log(_0x2c0f14);
 };
 const setPanEvents = _0x4c4b3a => {
+  let sizeText;
+
   _0x4c4b3a.on('mouse:move', _0x22b90d => {
     if (mousePressed && currentMode === "pan") {
       _0x4c4b3a.setCursor("grab");
       _0x4c4b3a.renderAll();
-      const _0xd922d3 = new fabric.Point(_0x22b90d.movementX, _0x22b90d.movementY);
+      const _0xd922d3 = new fabric.Point(_0x22b90d.e.movementX, _0x22b90d.e.movementY);
       _0x4c4b3a.relativePan(_0xd922d3);
+
+      const activeObject = _0x4c4b3a.getActiveObject();
+      if (activeObject && activeObject.type === 'image') {
+        // Display the size of the image while moving
+        displayImageSize(activeObject, _0x4c4b3a);
+      }
     }
   });
+
   _0x4c4b3a.on("mouse:down", _0x5ccec2 => {
     mousePressed = true;
     if (currentMode === "pan") {
@@ -55,20 +64,42 @@ const setPanEvents = _0x4c4b3a => {
       _0x4c4b3a.renderAll();
     }
   });
+
   _0x4c4b3a.on("mouse:up", _0x340ad1 => {
     mousePressed = false;
     _0x4c4b3a.setCursor("default");
     _0x4c4b3a.renderAll();
+
+    // Remove the sizeText when mouse is released
+    if (sizeText) {
+      _0x4c4b3a.remove(sizeText);
+      sizeText = null;
+    }
   });
-  _0x4c4b3a.on("drop", _0x328e73 => {
-    _0x328e73.e.preventDefault();
-    fabric.Image.fromURL(myImageSRC, function (_0x1e9827) {
-      _0x1e9827.left = _0x328e73.e.layerX;
-      _0x1e9827.top = _0x328e73.e.layerY;
-      _0x4c4b3a.add(_0x1e9827);
+
+  // Function to display the size of an image
+  function displayImageSize(img, canvas) {
+    // Remove previous sizeText if it exists
+    if (sizeText) {
+      canvas.remove(sizeText);
+    }
+
+    // Create a text object to display the image size
+    sizeText = new fabric.Text('Size: ' + img.width + ' x ' + img.height, {
+      left: img.left,
+      top: img.top + img.height * img.scaleY + 10,
+      fontSize: 16,
+      fill: 'black',
     });
-  });
+
+    // Add the text object to the canvas
+    canvas.add(sizeText);
+  }
 };
+
+
+
+
 const clearCanvas = (_0x11adff, _0x2c1d60) => {
   _0x2c1d60.value = _0x11adff.toSVG();
   _0x11adff.getObjects().forEach(_0x4f7446 => {
@@ -145,6 +176,54 @@ function saveImage(_0x2895f4) {
   });
   this.download = "canvas.png";
 }
+
+var jsond = document.createElement("json");
+var jsonSaver = document.getElementById('JSONDownload'); // Assuming you have an element with the ID 'JSONDownload'
+jsonSaver.addEventListener("click", saveJSON, false);
+
+function saveJSON(_0x2895f4) {
+  var jsonData = JSON.stringify(canvas);
+
+  // Create a blob from the JSON data
+  var blob = new Blob([jsonData], { type: 'application/json' });
+
+  // Create a link element
+  var link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'canvas_data.json'; // You can change the filename
+
+  // Trigger a click on the link to download the JSON
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Function to handle file input change
+function handleFileSelect(event) {
+  var file = event.target.files[0];
+
+  if (file) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      var jsonContent = e.target.result;
+
+      // Load JSON content into the canvas
+      canvas.loadFromJSON(jsonContent, function () {
+        // Render the canvas after loading JSON
+        canvas.renderAll();
+      });
+    };
+
+    // Read the file as text
+    reader.readAsText(file);
+  }
+}
+
+// Attach the event listener to the file input
+var jsonFileInput = document.getElementById('jsonFileInput');
+jsonFileInput.addEventListener('change', handleFileSelect, false);
+
 const canvas = new fabric.Canvas('zbcanvas', {
   'width': 660,
   'height': 520,
@@ -610,8 +689,8 @@ function additioncan(_0x18fd4a) {
   result.value = _0x5f5417;
   console.log(_0x5f5417);
   console.log(_0xf60d5f.value);
-  _0x9dade3.style.width = _0x5f5417 + 'px';
-  _0x55c222.style.width = _0x5f5417 + 'px';
+  _0x9dade3.style.width = _0x5f5417 + 'cm';
+  _0x55c222.style.width = _0x5f5417 + 'cm';
   canvas.renderAll();
 }
 function substcan(_0x1198db) {
@@ -625,8 +704,8 @@ function substcan(_0x1198db) {
   result.value = _0x410738;
   console.log(_0x410738);
   console.log(_0x3fcb99.value);
-  _0x68bcf.style.width = _0x410738 + 'px';
-  _0x4bd104.style.width = _0x410738 + 'px';
+  _0x68bcf.style.width = _0x410738 + 'cm';
+  _0x4bd104.style.width = _0x410738 + 'cm';
   canvas.renderAll();
 }
 function additioncanhie(_0x2bbe5d) {
@@ -638,8 +717,8 @@ function additioncanhie(_0x2bbe5d) {
   _0x1759bc = parseInt(result.value);
   _0x1759bc = _0x1759bc + 0x1;
   result.value = _0x1759bc;
-  _0x32d4ff.style.height = _0x1759bc + 'px';
-  _0xcfc654.style.height = _0x1759bc + 'px';
+  _0x32d4ff.style.height = _0x1759bc + 'cm';
+  _0xcfc654.style.height = _0x1759bc + 'cm';
   canvas.renderAll();
 }
 function substcanhie(_0x193164) {
@@ -651,8 +730,8 @@ function substcanhie(_0x193164) {
   _0x24fc5c = parseInt(result.value);
   _0x24fc5c = _0x24fc5c - 0x1;
   result.value = _0x24fc5c;
-  _0x5639a5.style.height = _0x24fc5c + 'px';
-  _0x4c85c6.style.height = _0x24fc5c + 'px';
+  _0x5639a5.style.height = _0x24fc5c + 'cm';
+  _0x4c85c6.style.height = _0x24fc5c + 'cm';
   canvas.renderAll();
 }
 radios5 = document.getElementsByName('fonttype');
