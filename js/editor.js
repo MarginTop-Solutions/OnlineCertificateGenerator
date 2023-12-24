@@ -40,7 +40,6 @@ const toggleMode = _0x2c0f14 => {
   console.log(_0x2c0f14);
 };
 const setPanEvents = _0x4c4b3a => {
-  let sizeText;
 
   _0x4c4b3a.on('mouse:move', _0x22b90d => {
     if (mousePressed && currentMode === "pan") {
@@ -48,12 +47,16 @@ const setPanEvents = _0x4c4b3a => {
       _0x4c4b3a.renderAll();
       const _0xd922d3 = new fabric.Point(_0x22b90d.e.movementX, _0x22b90d.e.movementY);
       _0x4c4b3a.relativePan(_0xd922d3);
-
+      // console.log('abc')
       const activeObject = _0x4c4b3a.getActiveObject();
       if (activeObject && activeObject.type === 'image') {
         // Display the size of the image while moving
-        displayImageSize(activeObject, _0x4c4b3a);
+        displayImageSize(activeObject);
       }
+      // if (tooltip) {
+      //   canvas.remove(tooltip);
+      // }
+      
     }
   });
 
@@ -62,6 +65,11 @@ const setPanEvents = _0x4c4b3a => {
     if (currentMode === "pan") {
       _0x4c4b3a.setCursor("grab");
       _0x4c4b3a.renderAll();
+      const activeObject = _0x4c4b3a.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      // Display the size of the image while moving
+      displayImageSize(activeObject);
+    }
     }
   });
 
@@ -69,35 +77,253 @@ const setPanEvents = _0x4c4b3a => {
     mousePressed = false;
     _0x4c4b3a.setCursor("default");
     _0x4c4b3a.renderAll();
-
-    // Remove the sizeText when mouse is released
-    if (sizeText) {
-      _0x4c4b3a.remove(sizeText);
-      sizeText = null;
+    // console.log('abc')
+    const activeObject = _0x4c4b3a.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      // Display the size of the image while moving
+      displayImageSize(activeObject);
     }
   });
 
-  // Function to display the size of an image
-  function displayImageSize(img, canvas) {
-    // Remove previous sizeText if it exists
-    if (sizeText) {
-      canvas.remove(sizeText);
-    }
-
-    // Create a text object to display the image size
-    sizeText = new fabric.Text('Size: ' + img.width + ' x ' + img.height, {
-      left: img.left,
-      top: img.top + img.height * img.scaleY + 10,
-      fontSize: 16,
-      fill: 'black',
-    });
-
-    // Add the text object to the canvas
-    canvas.add(sizeText);
-  }
+    // /siplay image size tooltip
+    
 };
 
+function pxToCm(px) {
+  // Assuming standard DPI of 96
+  const inches = px / 96;
+  const cm = inches * 2.54;
+  return cm.toFixed(2);
+}
 
+function cmToPx(cm) {
+  // Assuming standard DPI of 96
+  const inches = cm / 2.54;
+  const px = inches * 96;
+  return px.toFixed(2);
+}
+
+function displayImageSize(img) {
+  // Create a tooltip element
+  if (document.getElementById('dimension-tooltip')) {
+    const tooltip = document.getElementById('dimension-tooltip');
+    // Remove the tooltip element from its parent
+    tooltip.parentNode.removeChild(tooltip);
+  }
+  const tooltip = document.createElement('div');
+  tooltip.id = 'dimension-tooltip';
+  // console.log(img.lineCoords)
+  let dimension = calculateDimensions(img.lineCoords)
+  tooltip.textContent = '' + pxToCm(dimension.width) + 'cm X ' + pxToCm(dimension.height) + 'cm';
+  tooltip.style.position = 'absolute';
+  tooltip.style.fontSize = '16px';
+  tooltip.style.color = 'black';
+
+  document.body.appendChild(tooltip);
+  updateTooltipPosition();
+  // when mouse is clicked
+  // canvas.on('mouse:dowm', function (options) {
+  //   // if (options.target === img) {
+  //     updateTooltipPosition();
+  //   // } else {
+  //   //   // tooltip.style.display = 'none';
+  //   // }
+  // });
+  // canvas.on('mouse:up', function (options) {
+  //   if (options.target === img) {
+  //     updateTooltipPosition();
+  //   } else {
+  //     // tooltip.style.display = 'none';
+  //   }
+  // });
+  canvas.on('mouse:move', function (options) {
+    if (options.target === img) {
+      updateTooltipPosition();
+    } else {
+      tooltip.style.display = 'none';
+    }
+  });
+  // img.on('click', updateTooltipPosition)
+  img.on('moving', updateTooltipPosition);
+  img.on('scaling', updateTooltipPosition);
+  // canvas.on('object:modified', function(){
+  //   console.log('resize')
+  // });
+  document.addEventListener('canvasResize', function(event) {
+    displayImageSize();
+    // updateTooltipPosition();
+    // console.log('abc')
+    // Add your custom logic here
+  });
+  document.addEventListener('imageResize', function(event) {
+    displayImageSize();
+    // console.log('abc')
+    // Add your custom logic here
+  });
+
+  
+
+  function updateTooltipPosition() {
+    // const activeObject = canvas.activeObject;
+    // console.log(activeObject)
+    // if (activeObject && activeObject.type === 'image') {
+    //   // Display the size of the image while moving
+    //   img = activeObject;
+    //   console.log(img.left)
+    // }
+    // console.log(img.left)
+    tooltip.style.display = 'block';
+    let canvasMain = document.getElementsByClassName('canvas-container')[0];
+    // console.log(canvasMain.getBoundingClientRect().x)
+    tooltip.style.left = canvasMain.getBoundingClientRect().x + img.left + 'px';
+    tooltip.style.top = canvasMain.getBoundingClientRect().y + img.top - 20 + 'px';
+  }
+
+  // canvas.add(img);
+}
+
+// calculate height and width of bounding box
+function calculateDimensions(bbox) {
+  // Assuming bbox is an object with tl, tr, bl, and br properties
+  const { tl, tr, bl, br } = bbox;
+
+  // Calculate the width as the difference in x-coordinates of the top corners
+  const width = Math.abs(tr.x - tl.x).toFixed(2);
+
+  // Calculate the height as the difference in y-coordinates of the top corners
+  const height = Math.abs(tl.y - bl.y).toFixed(2);
+
+  return { width, height };
+}
+
+function Oadditioncan(_0x18fd4a) {
+  // console.log(_0x18fd4a)
+  const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      var _0xf60d5f = document.getElementById("objectWidth");
+      result = _0xf60d5f;
+      // console.log(result.value)
+      var _0x5f5417 = 0x0;
+      _0x5f5417 = parseInt(result.value);
+      _0x5f5417 = _0x5f5417 + 0x1;
+      result.value = _0x5f5417;
+      _0x5f5417 = cmToPx(_0x5f5417);
+      activeObject.set({
+        width: _0x5f5417
+      });
+      activeObject.setCoords();
+      canvas.renderAll();
+      var event = new CustomEvent('imageResize');
+      document.dispatchEvent(event);
+    }
+  
+}
+function OcanWit(_0x18fd4a) {
+  // console.log(_0x18fd4a)
+  const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      var _0xf60d5f = document.getElementById("objectWidth");
+      result = _0xf60d5f;
+      // console.log(result.value)
+      var _0x5f5417 = 0x0;
+      _0x5f5417 = parseInt(result.value);
+      // _0x5f5417 = _0x5f5417 + 0x1;
+      result.value = _0x5f5417;
+      _0x5f5417 = cmToPx(_0x5f5417);
+      activeObject.set({
+        width: _0x5f5417
+      });
+      activeObject.setCoords();
+      canvas.renderAll();
+      var event = new CustomEvent('imageResize');
+      document.dispatchEvent(event);
+    }
+  
+}
+function Osubstcan(_0x1198db) {
+  const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      var _0xf60d5f = document.getElementById("objectWidth");
+      result = _0xf60d5f;
+      // console.log(result.value)
+      var _0x5f5417 = 0x0;
+      _0x5f5417 = parseInt(result.value);
+      _0x5f5417 = _0x5f5417 - 0x1;
+      result.value = _0x5f5417;
+      _0x5f5417 = cmToPx(_0x5f5417);
+      activeObject.set({
+        width: _0x5f5417
+      });
+      activeObject.setCoords();
+      canvas.renderAll();
+      var event = new CustomEvent('imageResize');
+      document.dispatchEvent(event);
+    }
+
+}
+
+
+function Ocanhie(_0x2bbe5d) {
+  const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      var _0xf60d5f = document.getElementById("objectHeight");
+      result = _0xf60d5f;
+      // console.log(result.value)
+      var _0x5f5417 = 0x0;
+      _0x5f5417 = parseInt(result.value);
+      // _0x5f5417 = _0x5f5417 + 0x1;
+      result.value = _0x5f5417;
+      _0x5f5417 = cmToPx(_0x5f5417);
+      activeObject.set({
+        height: _0x5f5417
+      });
+      activeObject.setCoords();
+      canvas.renderAll();
+      var event = new CustomEvent('imageResize');
+      document.dispatchEvent(event);
+    }
+}
+
+function Oadditioncanhie(_0x2bbe5d) {
+  const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      var _0xf60d5f = document.getElementById("objectHeight");
+      result = _0xf60d5f;
+      // console.log(result.value)
+      var _0x5f5417 = 0x0;
+      _0x5f5417 = parseInt(result.value);
+      _0x5f5417 = _0x5f5417 + 0x1;
+      result.value = _0x5f5417;
+      _0x5f5417 = cmToPx(_0x5f5417);
+      activeObject.set({
+        height: _0x5f5417
+      });
+      activeObject.setCoords();
+      canvas.renderAll();
+      var event = new CustomEvent('imageResize');
+      document.dispatchEvent(event);
+    }
+}
+function Osubstcanhie(_0x193164) {
+  const activeObject = canvas.getActiveObject();
+    if (activeObject && activeObject.type === 'image') {
+      var _0xf60d5f = document.getElementById("objectHeight");
+      result = _0xf60d5f;
+      // console.log(result.value)
+      var _0x5f5417 = 0x0;
+      _0x5f5417 = parseInt(result.value);
+      _0x5f5417 = _0x5f5417 - 0x1;
+      result.value = _0x5f5417;
+      _0x5f5417 = cmToPx(_0x5f5417);
+      activeObject.set({
+        height: _0x5f5417
+      });
+      activeObject.setCoords();
+      canvas.renderAll();
+      var event = new CustomEvent('imageResize');
+      document.dispatchEvent(event);
+    }
+}
 
 
 const clearCanvas = (_0x11adff, _0x2c1d60) => {
@@ -270,7 +496,7 @@ const addtext = _0x47e60d => {
     'top': 0x64,
     'fontFamily': "Arial",
     'fill': "#333",
-    'fontSize': 0x2d,
+    'fontSize': 45,
     'left': _0x9e4222.left,
     'top': _0x9e4222.top,
     'originX': 'center',
@@ -692,6 +918,8 @@ function additioncan(_0x18fd4a) {
   _0x9dade3.style.width = _0x5f5417 + 'cm';
   _0x55c222.style.width = _0x5f5417 + 'cm';
   canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
 }
 function substcan(_0x1198db) {
   var _0x68bcf = document.getElementById("zbcanvas");
@@ -707,6 +935,9 @@ function substcan(_0x1198db) {
   _0x68bcf.style.width = _0x410738 + 'cm';
   _0x4bd104.style.width = _0x410738 + 'cm';
   canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
+
 }
 function additioncanhie(_0x2bbe5d) {
   var _0x32d4ff = document.getElementById("zbcanvas");
@@ -720,6 +951,8 @@ function additioncanhie(_0x2bbe5d) {
   _0x32d4ff.style.height = _0x1759bc + 'cm';
   _0xcfc654.style.height = _0x1759bc + 'cm';
   canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
 }
 function substcanhie(_0x193164) {
   var _0x5639a5 = document.getElementById('zbcanvas');
@@ -733,6 +966,8 @@ function substcanhie(_0x193164) {
   _0x5639a5.style.height = _0x24fc5c + 'cm';
   _0x4c85c6.style.height = _0x24fc5c + 'cm';
   canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
 }
 radios5 = document.getElementsByName('fonttype');
 var i = 0x0;
@@ -917,6 +1152,12 @@ function onObjectSelected() {
     document.getElementById("mydiv").style.display = "none";
     document.getElementById("shapespop").style.display = "block";
   }
+
+  const activeObject = _0x33ff20;
+    if (activeObject && activeObject.type === 'image') {
+      // Display the size of the image while moving
+      displayImageSize(activeObject);
+    }
 }
 ;
 var isRedoing = false;
