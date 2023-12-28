@@ -1093,6 +1093,10 @@ function updateObjectProperty(object) {
   objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY);
 }
 
+canvas.on("selection:cleared", function () {
+  document.getElementById("shapespop").style.display = "none";
+})
+
 canvas.on("selection:created", onObjectSelected);
 function onObjectSelected() {
   var _0x2c4d0f = canvas.getActiveObject().type ? canvas.getActiveObject().type : '';
