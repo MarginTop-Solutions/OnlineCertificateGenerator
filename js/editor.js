@@ -1,4 +1,4 @@
-function setImageSrc(start) {}
+function setImageSrc(start) { }
 const initCanvas = (first) => {
   return new fabric.Canvas(first, {
     'width': 0x240,
@@ -56,7 +56,7 @@ const setPanEvents = _0x4c4b3a => {
       // if (tooltip) {
       //   canvas.remove(tooltip);
       // }
-      
+
     }
   });
 
@@ -66,10 +66,10 @@ const setPanEvents = _0x4c4b3a => {
       _0x4c4b3a.setCursor("grab");
       _0x4c4b3a.renderAll();
       const activeObject = _0x4c4b3a.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      // Display the size of the image while moving
-      displayImageSize(activeObject);
-    }
+      if (activeObject && activeObject.type === 'image') {
+        // Display the size of the image while moving
+        displayImageSize(activeObject);
+      }
     }
   });
 
@@ -85,8 +85,8 @@ const setPanEvents = _0x4c4b3a => {
     }
   });
 
-    // /siplay image size tooltip
-    
+  // /siplay image size tooltip
+
 };
 
 function pxToCm(px) {
@@ -113,8 +113,8 @@ function displayImageSize(img) {
   const tooltip = document.createElement('div');
   tooltip.id = 'dimension-tooltip';
   // console.log(img.lineCoords)
-  let dimension = calculateDimensions(img.lineCoords)
-  tooltip.textContent = '' + pxToCm(dimension.width) + 'cm X ' + pxToCm(dimension.height) + 'cm';
+  // let dimension = calculateDimensions(img.lineCoords)
+  tooltip.textContent = '' + pxToCm(img.width * img.scaleX) + 'cm X ' + pxToCm(img.height * img.scaleY) + 'cm';
   tooltip.style.position = 'absolute';
   tooltip.style.fontSize = '16px';
   tooltip.style.color = 'black';
@@ -149,19 +149,19 @@ function displayImageSize(img) {
   // canvas.on('object:modified', function(){
   //   console.log('resize')
   // });
-  document.addEventListener('canvasResize', function(event) {
+  document.addEventListener('canvasResize', function (event) {
     displayImageSize();
     // updateTooltipPosition();
     // console.log('abc')
     // Add your custom logic here
   });
-  document.addEventListener('imageResize', function(event) {
+  document.addEventListener('imageResize', function (event) {
     displayImageSize();
     // console.log('abc')
     // Add your custom logic here
   });
 
-  
+
 
   function updateTooltipPosition() {
     // const activeObject = canvas.activeObject;
@@ -196,133 +196,96 @@ function calculateDimensions(bbox) {
   return { width, height };
 }
 
-function Oadditioncan(_0x18fd4a) {
-  // console.log(_0x18fd4a)
+function Oadditioncan() {
   const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      var _0xf60d5f = document.getElementById("objectWidth");
-      result = _0xf60d5f;
-      // console.log(result.value)
-      var _0x5f5417 = 0x0;
-      _0x5f5417 = parseInt(result.value);
-      _0x5f5417 = _0x5f5417 + 0x1;
-      result.value = _0x5f5417;
-      _0x5f5417 = cmToPx(_0x5f5417);
-      activeObject.set({
-        width: _0x5f5417
-      });
-      activeObject.setCoords();
-      canvas.renderAll();
-      var event = new CustomEvent('imageResize');
-      document.dispatchEvent(event);
-    }
-  
+  if (activeObject) {
+    var w = activeObject.width * activeObject.scaleX;
+    var val = pxToCm(w) + 1;
+    document.getElementById("objectWidth").value = val;
+    activeObject.set({
+      scaleX: val / pxToCm(activeObject.width)
+    });
+    activeObject.setCoords();
+    canvas.renderAll();
+    var event = new CustomEvent('imageResize');
+    document.dispatchEvent(event);
+  }
 }
 function OcanWit(_0x18fd4a) {
-  // console.log(_0x18fd4a)
   const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      var _0xf60d5f = document.getElementById("objectWidth");
-      result = _0xf60d5f;
-      // console.log(result.value)
-      var _0x5f5417 = 0x0;
-      _0x5f5417 = parseInt(result.value);
-      // _0x5f5417 = _0x5f5417 + 0x1;
-      result.value = _0x5f5417;
-      _0x5f5417 = cmToPx(_0x5f5417);
-      activeObject.set({
-        width: _0x5f5417
-      });
-      activeObject.setCoords();
-      canvas.renderAll();
-      var event = new CustomEvent('imageResize');
-      document.dispatchEvent(event);
-    }
-  
-}
-function Osubstcan(_0x1198db) {
-  const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      var _0xf60d5f = document.getElementById("objectWidth");
-      result = _0xf60d5f;
-      // console.log(result.value)
-      var _0x5f5417 = 0x0;
-      _0x5f5417 = parseInt(result.value);
-      _0x5f5417 = _0x5f5417 - 0x1;
-      result.value = _0x5f5417;
-      _0x5f5417 = cmToPx(_0x5f5417);
-      activeObject.set({
-        width: _0x5f5417
-      });
-      activeObject.setCoords();
-      canvas.renderAll();
-      var event = new CustomEvent('imageResize');
-      document.dispatchEvent(event);
-    }
+  if (activeObject) { // && activeObject.type === 'image'
+    var _0x5f5417 = cmToPx(parseInt(_0x18fd4a));
+    activeObject.set({
+      scaleX: _0x5f5417 / activeObject.width
+    });
+    activeObject.setCoords();
+    canvas.renderAll();
+    var event = new CustomEvent('imageResize');
+    document.dispatchEvent(event);
+  }
 
+}
+function Osubstcan() {
+  const activeObject = canvas.getActiveObject();
+  if (activeObject) {
+    var w = activeObject.width * activeObject.scaleX;
+    var val = pxToCm(w) - 1;
+    document.getElementById("objectWidth").value = val;
+    activeObject.set({
+      scaleX: val / pxToCm(activeObject.width)
+    });
+    activeObject.setCoords();
+    canvas.renderAll();
+    var event = new CustomEvent('imageResize');
+    document.dispatchEvent(event);
+  }
 }
 
 
 function Ocanhie(_0x2bbe5d) {
   const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      var _0xf60d5f = document.getElementById("objectHeight");
-      result = _0xf60d5f;
-      // console.log(result.value)
-      var _0x5f5417 = 0x0;
-      _0x5f5417 = parseInt(result.value);
-      // _0x5f5417 = _0x5f5417 + 0x1;
-      result.value = _0x5f5417;
-      _0x5f5417 = cmToPx(_0x5f5417);
-      activeObject.set({
-        height: _0x5f5417
-      });
-      activeObject.setCoords();
-      canvas.renderAll();
-      var event = new CustomEvent('imageResize');
-      document.dispatchEvent(event);
-    }
+  if (activeObject) { // && activeObject.type === 'image'
+    var _0x5f5417 = cmToPx(parseInt(_0x2bbe5d));
+    activeObject.set({
+      scaleY: _0x5f5417 / activeObject.height
+    });
+    activeObject.setCoords();
+    canvas.renderAll();
+    var event = new CustomEvent('imageResize');
+    document.dispatchEvent(event);
+  }
 }
 
-function Oadditioncanhie(_0x2bbe5d) {
+function Oadditioncanhie() {
   const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      var _0xf60d5f = document.getElementById("objectHeight");
-      result = _0xf60d5f;
-      // console.log(result.value)
-      var _0x5f5417 = 0x0;
-      _0x5f5417 = parseInt(result.value);
-      _0x5f5417 = _0x5f5417 + 0x1;
-      result.value = _0x5f5417;
-      _0x5f5417 = cmToPx(_0x5f5417);
-      activeObject.set({
-        height: _0x5f5417
-      });
-      activeObject.setCoords();
-      canvas.renderAll();
-      var event = new CustomEvent('imageResize');
-      document.dispatchEvent(event);
-    }
+  if (activeObject) {
+    var w = activeObject.height * activeObject.scaleY;
+    var val = pxToCm(w) + 1;
+    console.log(pxToCm(w), val);
+    document.getElementById("objectHeight").value = val;
+    activeObject.set({
+      scaleY: val / pxToCm(activeObject.height)
+    });
+    activeObject.setCoords();
+    canvas.renderAll();
+    var event = new CustomEvent('imageResize');
+    document.dispatchEvent(event);
+  }
 }
-function Osubstcanhie(_0x193164) {
+function Osubstcanhie() {
   const activeObject = canvas.getActiveObject();
-    if (activeObject && activeObject.type === 'image') {
-      var _0xf60d5f = document.getElementById("objectHeight");
-      result = _0xf60d5f;
-      // console.log(result.value)
-      var _0x5f5417 = 0x0;
-      _0x5f5417 = parseInt(result.value);
-      _0x5f5417 = _0x5f5417 - 0x1;
-      result.value = _0x5f5417;
-      _0x5f5417 = cmToPx(_0x5f5417);
-      activeObject.set({
-        height: _0x5f5417
-      });
-      activeObject.setCoords();
-      canvas.renderAll();
-      var event = new CustomEvent('imageResize');
-      document.dispatchEvent(event);
-    }
+  if (activeObject) {
+    var w = activeObject.height * activeObject.scaleY;
+    var val = pxToCm(w) - 1;
+    document.getElementById("objectHeight").value = val;
+    activeObject.set({
+      scaleY: val / pxToCm(activeObject.height)
+    });
+    activeObject.setCoords();
+    canvas.renderAll();
+    var event = new CustomEvent('imageResize');
+    document.dispatchEvent(event);
+  }
 }
 
 
@@ -1122,6 +1085,14 @@ var sendSelectedObjectforward = function () {
   console.log(event.target);
   canvas.bringForward(objectBringToFront);
 };
+
+function updateObjectProperty(object) {
+  var objprop = document.getElementById("shapespop");
+  //console.log(object);
+  objprop.querySelector("#objectWidth").value = pxToCm(object.width * object.scaleX);
+  objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY);
+}
+
 canvas.on("selection:created", onObjectSelected);
 function onObjectSelected() {
   var _0x2c4d0f = canvas.getActiveObject().type ? canvas.getActiveObject().type : '';
@@ -1135,13 +1106,17 @@ function onObjectSelected() {
   } else {
     document.getElementById("mydiv").style.display = "none";
     document.getElementById("shapespop").style.display = "block";
+    updateObjectProperty(canvas.getActiveObject());
   }
-}
-;
+};
+
+canvas.on('object:scaling', function (e) {
+  updateObjectProperty(e.target);
+});
+
 canvas.on('selection:updated', onObjectSelected);
 function onObjectSelected() {
   var _0x33ff20 = canvas.getActiveObject().type ? canvas.getActiveObject().type : '';
-  console.log(_0x33ff20);
   if (_0x33ff20 == "i-text") {
     document.getElementById("mydiv").style.display = 'block';
     document.getElementById("shapespop").style.display = "none";
@@ -1151,13 +1126,14 @@ function onObjectSelected() {
   } else {
     document.getElementById("mydiv").style.display = "none";
     document.getElementById("shapespop").style.display = "block";
+    updateObjectProperty(canvas.getActiveObject());
   }
 
   const activeObject = _0x33ff20;
-    if (activeObject && activeObject.type === 'image') {
-      // Display the size of the image while moving
-      displayImageSize(activeObject);
-    }
+  if (activeObject && activeObject.type === 'image') {
+    // Display the size of the image while moving
+    displayImageSize(activeObject);
+  }
 }
 ;
 var isRedoing = false;

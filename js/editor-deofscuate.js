@@ -70,6 +70,7 @@ const setPanEvents = _0x4c4b3a => {
       }
     }
   });
+
   _0x4c4b3a.on("mouse:up", _0x340ad1 => {
     mousePressed = false;
     _0x4c4b3a.setCursor("default");
@@ -470,6 +471,7 @@ fabric.Object.prototype.noScaleCache = false;
 canvas.uniformScaling = true;
 fabric.perfLimitSizeTotal = 0xd693a40;
 fabric.maxCacheSideLimit = 0xa7d8c0;
+
 const addtext = _0x47e60d => {
   const _0x9e4222 = _0x47e60d.getCenter();
   const _0x23d6ec = new fabric.IText("Tap and Type", {
@@ -508,6 +510,7 @@ const addtextarea = _0x1f3b56 => {
   _0x1f3b56.setActiveObject(_0x77f313);
   _0x1f3b56.requestRenderAll();
 };
+
 $(".add_shape").click(function () {
   var _0x3d3178 = $(this).attr("data-rel");
   if (_0x3d3178 != '') {
