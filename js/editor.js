@@ -93,14 +93,14 @@ function pxToCm(px) {
   // Assuming standard DPI of 96
   const inches = px / 96;
   const cm = inches * 2.54;
-  return cm.toFixed(2);
+  return cm;
 }
 
 function cmToPx(cm) {
   // Assuming standard DPI of 96
   const inches = cm / 2.54;
   const px = inches * 96;
-  return px.toFixed(2);
+  return px;
 }
 
 function displayImageSize(img) {
@@ -114,7 +114,7 @@ function displayImageSize(img) {
   tooltip.id = 'dimension-tooltip';
   // console.log(img.lineCoords)
   // let dimension = calculateDimensions(img.lineCoords)
-  tooltip.textContent = '' + pxToCm(img.width * img.scaleX) + 'cm X ' + pxToCm(img.height * img.scaleY) + 'cm';
+  tooltip.textContent = '' + pxToCm(img.width * img.scaleX).toFixed(2) + 'cm X ' + pxToCm(img.height * img.scaleY).toFixed(2) + 'cm';
   tooltip.style.position = 'absolute';
   tooltip.style.fontSize = '16px';
   tooltip.style.color = 'black';
@@ -200,10 +200,10 @@ function Oadditioncan() {
   const activeObject = canvas.getActiveObject();
   if (activeObject) {
     var w = activeObject.width * activeObject.scaleX;
-    var val = pxToCm(w) + 1;
-    document.getElementById("objectWidth").value = val;
+    var val = w + cmToPx(1);
+    document.getElementById("objectWidth").value = pxToCm(val).toFixed(2);
     activeObject.set({
-      scaleX: val / pxToCm(activeObject.width)
+      scaleX: val / activeObject.width
     });
     activeObject.setCoords();
     canvas.renderAll();
@@ -229,10 +229,10 @@ function Osubstcan() {
   const activeObject = canvas.getActiveObject();
   if (activeObject) {
     var w = activeObject.width * activeObject.scaleX;
-    var val = pxToCm(w) - 1;
-    document.getElementById("objectWidth").value = val;
+    var val = w - cmToPx(1);
+    document.getElementById("objectWidth").value = pxToCm(val).toFixed(2);
     activeObject.set({
-      scaleX: val / pxToCm(activeObject.width)
+      scaleX: val / activeObject.width
     });
     activeObject.setCoords();
     canvas.renderAll();
@@ -260,11 +260,10 @@ function Oadditioncanhie() {
   const activeObject = canvas.getActiveObject();
   if (activeObject) {
     var w = activeObject.height * activeObject.scaleY;
-    var val = pxToCm(w) + 1;
-    console.log(pxToCm(w), val);
-    document.getElementById("objectHeight").value = val;
+    var val = w + cmToPx(1);
+    document.getElementById("objectHeight").value = pxToCm(val).toFixed(2);
     activeObject.set({
-      scaleY: val / pxToCm(activeObject.height)
+      scaleY: val / activeObject.height
     });
     activeObject.setCoords();
     canvas.renderAll();
@@ -276,10 +275,10 @@ function Osubstcanhie() {
   const activeObject = canvas.getActiveObject();
   if (activeObject) {
     var w = activeObject.height * activeObject.scaleY;
-    var val = pxToCm(w) - 1;
-    document.getElementById("objectHeight").value = val;
+    var val = w - cmToPx(1);
+    document.getElementById("objectHeight").value = pxToCm(val).toFixed(2);
     activeObject.set({
-      scaleY: val / pxToCm(activeObject.height)
+      scaleY: val / activeObject.height
     });
     activeObject.setCoords();
     canvas.renderAll();
@@ -1089,8 +1088,8 @@ var sendSelectedObjectforward = function () {
 function updateObjectProperty(object) {
   var objprop = document.getElementById("shapespop");
   //console.log(object);
-  objprop.querySelector("#objectWidth").value = pxToCm(object.width * object.scaleX);
-  objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY);
+  objprop.querySelector("#objectWidth").value = pxToCm(object.width * object.scaleX).toFixed(2);
+  objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY).toFixed(2);
 }
 
 canvas.on("selection:cleared", function () {
