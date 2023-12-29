@@ -178,19 +178,19 @@
 </div>
 
 <div id="mydiv" class="zohpopup">
-  <button class="increase" onclick="closediv()" style="float: right;margin-right: 10px;margin-top: 10px;">X</button>
+  <button class="increase" onclick="closediv()" style="float: right;margin-top: 10px;">X</button>
   <h1>Text Properties</h1>
   <hr>
 
   <div id="text-controls-additional" class="zohinpop">
     <div class="input-container">
-      <label for="text-lines-bg-color">Text Color:</label>
+      <label for="text-lines-bg-color">Text Color</label>
       <div class="custom-number-input">
         <input id="colorPicker" value="" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
       </div>
     </div>
     <div class="input-container">
-      <div>
+      <div style="display: flex;align-items: center; flex-wrap: wrap; gap: 4px;">
         <input type='checkbox' name='fonttype' id="text-cmd-bold">
         Bold</input>
 
@@ -272,7 +272,7 @@
 </div>
 
 <div class="canpropopup" id="myform">
-  <button class="increase" onclick="closeForm()" style="margin-left: 200px;margin-top: 10px;">X</button>
+  <button class="increase" onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
   <h1>Canvas Properties</h1>
   <hr>
 
@@ -314,8 +314,7 @@
 </div>
 
 <div id="shapespop" class="shapepopup">
-  <button class="increase" onclick="closeshapespop()"
-    style="float: right;margin-right: 10px;margin-top: 10px;">X</button>
+  <button class="increase" onclick="closeshapespop()" style="float: right">X</button>
   <h1>Objects</h1>
   <hr>
   <div class="shape">
@@ -348,8 +347,8 @@
     </button>
   </div>
   <hr>
-  <h1>Objects Settings</h1>
-  <div style="overflow-y: hidden;">
+  <h1 style="margin-top: 1.5em; margin-bottom: 1em;">Objects Settings</h1>
+  <div style="overflow-y: hidden; display: flex; flex-direction: column; justify-content: space-around; gap: 2em;">
     <div class="input-container">
       <label>Object Width(cm)</label>
       <div class="custom-number-input">
@@ -370,15 +369,13 @@
     <div class="input-container">
       <label>Stroke Width</label>
       <div class="custom-number-input" bind-value-to="strokeWidth">
-
         <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
-
       </div>
     </div>
     <div class="input-container">
       <label for="text-lines-bg-color">Stroke Color:</label>
       <div class="custom-number-input">
-        <input id="storkeColor" value="" data-jscolor="{}" size="10" style="border-radius: 4px;">
+        <input id="strokeColor" value="#000000" data-jscolor="{}" size="10" style="border-radius: 4px;">
       </div>
     </div>
     <div class="input-container">

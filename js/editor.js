@@ -1045,7 +1045,7 @@ document.getElementById("colorPicker1").onchange = function () {
   canvas.getActiveObject().set("fill", this.value);
   canvas.renderAll();
 };
-document.getElementById("storkeColor").onchange = function () {
+document.getElementById("strokeColor").onchange = function () {
   console.log(this.value);
   canvas.getActiveObject().set("stroke", this.value);
   canvas.renderAll();
@@ -1087,9 +1087,11 @@ var sendSelectedObjectforward = function () {
 
 function updateObjectProperty(object) {
   var objprop = document.getElementById("shapespop");
-  //console.log(object);
   objprop.querySelector("#objectWidth").value = pxToCm(object.width * object.scaleX).toFixed(2);
   objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY).toFixed(2);
+  objprop.querySelector("#control_border").value = object.strokeWidth;
+  objprop.querySelector("#strokeColor").value = object.stroke === "black" ? "#000000" : object.stroke;
+  objprop.querySelector("#colorPicker1").value = object.fill;
 }
 
 canvas.on("selection:cleared", function () {
