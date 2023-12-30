@@ -150,13 +150,13 @@ function displayImageSize(img) {
   //   console.log('resize')
   // });
   document.addEventListener('canvasResize', function (event) {
-    displayImageSize();
+    //displayImageSize();
     // updateTooltipPosition();
     // console.log('abc')
     // Add your custom logic here
   });
   document.addEventListener('imageResize', function (event) {
-    displayImageSize();
+    //displayImageSize();
     // console.log('abc')
     // Add your custom logic here
   });
@@ -866,71 +866,52 @@ document.getElementById("file2").addEventListener("change", function (_0x382039)
   };
   _0x7266d0.readAsDataURL(_0x33f7d6);
 });
-function additioncan(_0x18fd4a) {
-  var _0x9dade3 = document.getElementById('zbcanvas');
-  var _0x55c222 = document.getElementsByClassName('upper-canvas')[0x0];
-  var _0xf60d5f = document.getElementById("enterCanvasWidth");
-  result = _0xf60d5f;
-  var _0x5f5417 = 0x0;
-  _0x5f5417 = parseInt(result.value);
-  _0x5f5417 = _0x5f5417 + 0x1;
-  result.value = _0x5f5417;
-  console.log(_0x5f5417);
-  console.log(_0xf60d5f.value);
-  _0x9dade3.style.width = _0x5f5417 + 'cm';
-  _0x55c222.style.width = _0x5f5417 + 'cm';
+function additioncan() {
+  const x = canvas.width + cmToPx(1);
+  canvas.setWidth(x);
+  document.getElementById("enterCanvasWidth").value = pxToCm(x).toFixed(2);
   canvas.renderAll();
   var event = new CustomEvent('canvasResize');
   document.dispatchEvent(event);
 }
-function substcan(_0x1198db) {
-  var _0x68bcf = document.getElementById("zbcanvas");
-  var _0x4bd104 = document.getElementsByClassName("upper-canvas")[0x0];
-  var _0x3fcb99 = document.getElementById("enterCanvasWidth");
-  result = _0x3fcb99;
-  var _0x410738 = 0x0;
-  _0x410738 = parseInt(result.value);
-  _0x410738 = _0x410738 - 0x1;
-  result.value = _0x410738;
-  console.log(_0x410738);
-  console.log(_0x3fcb99.value);
-  _0x68bcf.style.width = _0x410738 + 'cm';
-  _0x4bd104.style.width = _0x410738 + 'cm';
+function substcan() {
+  const x = canvas.width - cmToPx(1);
+  canvas.setWidth(x);
+  document.getElementById("enterCanvasWidth").value = pxToCm(x).toFixed(2);
   canvas.renderAll();
   var event = new CustomEvent('canvasResize');
   document.dispatchEvent(event);
+}
+function updtcanw(nw) {
+  console.log(nw);
+  canvas.setWidth(cmToPx(parseInt(nw)));
+  canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
+}
+function updtcanh(nh) {
+  canvas.setHeight(cmToPx(parseInt(nh)));
+  canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
+}
+function additioncanhie() {
+  const x = canvas.height + cmToPx(1);
+  canvas.setHeight(x);
+  document.getElementById("enterCanvasHeight").value = pxToCm(x).toFixed(2);
+  canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
+}
+function substcanhie() {
+  const x = canvas.height - cmToPx(1);
+  canvas.setHeight(x);
+  document.getElementById("enterCanvasHeight").value = pxToCm(x).toFixed(2);
+  canvas.renderAll();
+  var event = new CustomEvent('canvasResize');
+  document.dispatchEvent(event);
+}
 
-}
-function additioncanhie(_0x2bbe5d) {
-  var _0x32d4ff = document.getElementById("zbcanvas");
-  var _0xcfc654 = document.getElementsByClassName("upper-canvas")[0x0];
-  var _0x24b645 = document.getElementById("enterCanvasHeight");
-  result = _0x24b645;
-  var _0x1759bc = 0x0;
-  _0x1759bc = parseInt(result.value);
-  _0x1759bc = _0x1759bc + 0x1;
-  result.value = _0x1759bc;
-  _0x32d4ff.style.height = _0x1759bc + 'cm';
-  _0xcfc654.style.height = _0x1759bc + 'cm';
-  canvas.renderAll();
-  var event = new CustomEvent('canvasResize');
-  document.dispatchEvent(event);
-}
-function substcanhie(_0x193164) {
-  var _0x5639a5 = document.getElementById('zbcanvas');
-  var _0x4c85c6 = document.getElementsByClassName('upper-canvas')[0x0];
-  var _0x9e621a = document.getElementById('enterCanvasHeight');
-  result = _0x9e621a;
-  var _0x24fc5c = 0x0;
-  _0x24fc5c = parseInt(result.value);
-  _0x24fc5c = _0x24fc5c - 0x1;
-  result.value = _0x24fc5c;
-  _0x5639a5.style.height = _0x24fc5c + 'cm';
-  _0x4c85c6.style.height = _0x24fc5c + 'cm';
-  canvas.renderAll();
-  var event = new CustomEvent('canvasResize');
-  document.dispatchEvent(event);
-}
 radios5 = document.getElementsByName('fonttype');
 var i = 0x0;
 for (var max = radios5.length; i < max; i++) {
