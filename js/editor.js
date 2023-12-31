@@ -451,6 +451,7 @@ fabric.Object.prototype.noScaleCache = false;
 canvas.uniformScaling = true;
 fabric.perfLimitSizeTotal = 0xd693a40;
 fabric.maxCacheSideLimit = 0xa7d8c0;
+
 const addtext = _0x47e60d => {
   const _0x9e4222 = _0x47e60d.getCenter();
   const _0x23d6ec = new fabric.IText("Tap and Type", {
@@ -489,18 +490,39 @@ const addtextarea = _0x1f3b56 => {
   _0x1f3b56.setActiveObject(_0x77f313);
   _0x1f3b56.requestRenderAll();
 };
+
 $(".add_shape").click(function () {
   var _0x3d3178 = $(this).attr("data-rel");
+
+  const props = {
+    width: cmToPx(parseFloat(document.getElementById("objectWidth").value)),
+    height: cmToPx(parseFloat(document.getElementById('objectHeight').value)),
+    strokeWidth: parseFloat(document.getElementById('control_border').value),
+    strokeColor: document.getElementById('strokeColor').value,
+    color: document.getElementById('colorPicker1').value
+  };
+
+  function getPolyPoints(n, r) {
+    const del = 2 * Math.PI / n;
+    var an = del - Math.PI / 2;
+    let coords = [];
+    for (let i = 0; i < n; i++) {
+      coords.push({ 'x': r * Math.cos(an), 'y': r * Math.sin(an) });
+      an += del;
+    }
+    return coords;
+  }
+
+  var _0x2a714e = canvas.getCenter();
   if (_0x3d3178 != '') {
     switch (_0x3d3178) {
       case 'rectangle':
-        var _0x2a714e = canvas.getCenter();
         var _0x44a3d6 = new fabric.Rect({
-          'width': 0x64,
-          'height': 0x64,
-          'fill': '',
-          'stroke': "black",
-          'strokeWidth': 0x1,
+          'width': props.width,
+          'height': props.height,
+          'fill': props.color,
+          'stroke': props.strokeColor,
+          'strokeWidth': props.strokeWidth,
           'strokeLineJoin': "bevil",
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
@@ -513,12 +535,11 @@ $(".add_shape").click(function () {
         canvas.setActiveObject(_0x44a3d6);
         break;
       case "circle":
-        var _0x2a714e = canvas.getCenter();
         var _0x4a46be = new fabric.Circle({
-          'radius': 0x32,
-          'fill': '',
-          'stroke': "black",
-          'strokeWidth': 0x1,
+          'radius': props.width / 2,
+          'fill': props.color,
+          'stroke': props.strokeColor,
+          'strokeWidth': props.strokeWidth,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': "center",
@@ -530,13 +551,12 @@ $(".add_shape").click(function () {
         canvas.setActiveObject(_0x4a46be);
         break;
       case "ellipse":
-        var _0x2a714e = canvas.getCenter();
         var _0x3382f0 = new fabric.Ellipse({
-          'rx': 0x50,
-          'ry': 0x28,
-          'fill': '',
-          'stroke': "black",
-          'strokeWidth': 0x1,
+          'rx': props.width / 2,
+          'ry': props.height / 2,
+          'fill': props.color,
+          'stroke': props.strokeColor,
+          'strokeWidth': props.strokeWidth,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': "center",
@@ -548,13 +568,12 @@ $(".add_shape").click(function () {
         canvas.setActiveObject(_0x4a46be);
         break;
       case "triangle":
-        var _0x2a714e = canvas.getCenter();
         var _0x52f195 = new fabric.Triangle({
-          'width': 0x96,
-          'height': 0x64,
-          'fill': '',
-          'stroke': "black",
-          'strokeWidth': 0x1,
+          'width': props.width,
+          'height': props.height,
+          'fill': props.color,
+          'stroke': props.strokeColor,
+          'strokeWidth': props.strokeWidth,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': "center",
@@ -567,105 +586,14 @@ $(".add_shape").click(function () {
         canvas.requestRenderAll();
         break;
       case 'hexagon':
-        var _0x94c529 = [{
-          'x': -0x64,
-          'y': -0x32
-        }, {
-          'x': 0x64,
-          'y': -0x32
-        }, {
-          'x': 0x96,
-          'y': 0x32
-        }, {
-          'x': -0x96,
-          'y': 0x32
-        }];
-        var _0xbfa4b4 = [{
-          'x': 0x352,
-          'y': 0x4b
-        }, {
-          'x': 0x3be,
-          'y': 137.5
-        }, {
-          'x': 0x3be,
-          'y': 262.5
-        }, {
-          'x': 0x352,
-          'y': 0x145
-        }, {
-          'x': 0x2e6,
-          'y': 262.5
-        }, {
-          'x': 0x2e6,
-          'y': 137.5
-        }];
-        var _0x15cad7 = [{
-          'x': 0x0,
-          'y': 0x0
-        }, {
-          'x': 0x64,
-          'y': 0x32
-        }, {
-          'x': 0xc8,
-          'y': 0x0
-        }, {
-          'x': 0x96,
-          'y': 0x64
-        }, {
-          'x': 0xc8,
-          'y': 0xc8
-        }, {
-          'x': 0x64,
-          'y': 0x96
-        }, {
-          'x': 0x0,
-          'y': 0xc8
-        }, {
-          'x': 0x32,
-          'y': 0x64
-        }, {
-          'x': 0x0,
-          'y': 0x0
-        }];
-        var _0x4aba06 = [{
-          'x': 0x15e,
-          'y': 0x4b
-        }, {
-          'x': 0x17c,
-          'y': 0xa0
-        }, {
-          'x': 0x1d6,
-          'y': 0xa0
-        }, {
-          'x': 0x190,
-          'y': 0xd7
-        }, {
-          'x': 0x1a7,
-          'y': 0x12d
-        }, {
-          'x': 0x15e,
-          'y': 0xfa
-        }, {
-          'x': 0x115,
-          'y': 0x12d
-        }, {
-          'x': 0x12f,
-          'y': 0xd7
-        }, {
-          'x': 0xe7,
-          'y': 0xa1
-        }, {
-          'x': 0x141,
-          'y': 0xa1
-        }];
-        var _0xfe5cc5 = new Array(_0x94c529, _0xbfa4b4, _0x15cad7, _0x4aba06);
-        var _0x2a714e = canvas.getCenter();
-        var _0x5003bc = new fabric.Polygon(_0xfe5cc5[0x1], {
+        var _0x5003bc = new fabric.Polygon(getPolyPoints(6, props.width / 2), {
           'top': 0xb4,
           'left': 0xc8,
-          'fill': '',
-          'stroke': "black",
-          'strokeWidth': 0x1,
+          'fill': props.color,
+          'stroke': props.strokeColor,
+          'strokeWidth': props.strokeWidth,
+          'width': props.width,
+          'height': props.height,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': "center",
@@ -679,13 +607,12 @@ $(".add_shape").click(function () {
         break;
       case "star":
         var _0xb80ac1 = _0x4ecddb(0x5, 0x32, 0x19);
-        var _0x2a714e = canvas.getCenter();
         var _0x5930c7 = new fabric.Polygon(_0xb80ac1, {
-          'fill': '',
-          'stroke': 'black',
+          'fill': props.color,
+          'stroke': props.strokeColor,
           'left': 0x64,
           'top': 0xa,
-          'strokeWidth': 0x1,
+          'strokeWidth': props.strokeWidth,
           'strokeLineJoin': 'bevil',
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
@@ -722,29 +649,10 @@ $(".add_shape").click(function () {
         }
         break;
       case "pentagon":
-        var _0x2a714e = canvas.getCenter();
-        var _0xbc7fa1 = new fabric.Polyline([{
-          'x': 0xc8,
-          'y': 0xa
-        }, {
-          'x': 0xfa,
-          'y': 0x32
-        }, {
-          'x': 0xfa,
-          'y': 0xb4
-        }, {
-          'x': 0x96,
-          'y': 0xb4
-        }, {
-          'x': 0x96,
-          'y': 0x32
-        }, {
-          'x': 0xc8,
-          'y': 0xa
-        }], {
-          'stroke': "black",
-          'strokeWidth': 0x1,
-          'fill': '',
+        var _0xbc7fa1 = new fabric.Polyline(getPolyPoints(5, props.width / 2), {
+          'stroke': props.strokeColor,
+          'strokeWidth': props.strokeWidth,
+          'fill': props.color,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': 'center',
@@ -758,19 +666,14 @@ $(".add_shape").click(function () {
         canvas.requestRenderAll();
         break;
       case "diamond":
-        var _0x2a714e = canvas.getCenter();
         var _0x44c31d = new fabric.Rect({
           'left': 0x64,
           'top': 0x32,
-          'fill': '',
-          'width': 0x32,
-          'height': 0x32,
-          'stroke': "black",
-          'rx': 0xa,
-          'ry': 0xa,
+          'fill': props.color,
+          'width': props.width,
+          'height': props.width,
+          'stroke': props.strokeColor,
           'angle': 0x2d,
-          'scaleX': 0x3,
-          'scaleY': 0x3,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': 'center',
@@ -784,9 +687,8 @@ $(".add_shape").click(function () {
         canvas.requestRenderAll();
         break;
       case 'line':
-        var _0x2a714e = canvas.getCenter();
         var _0x4bb52f = new fabric.Line([0x32, 0xa, 0xc8, 0x96], {
-          'stroke': "black",
+          'stroke': props.strokeColor,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': 'center',
@@ -1033,14 +935,7 @@ document.getElementById("strokeColor").onchange = function () {
 };
 $("#control_border").change(function () {
   var _0x3ba1a0 = parseInt($(this).val());
-  var _0x36288d = canvas.getActiveObject();
-  if (_0x36288d == undefined) {
-    alert("Please select the Object");
-    return false;
-  }
-  _0x36288d.set({
-    'strokeWidth': _0x3ba1a0
-  });
+  canvas.getActiveObject().set({ 'strokeWidth': _0x3ba1a0 });
   canvas.renderAll();
 });
 var objectToSendBack;

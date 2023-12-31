@@ -47,41 +47,6 @@ div.zoh0 {
 .Footer a{
   text-decoration: none;
 }
-/* div.zoh1 {
-  /* background-color: rgb(190, 100, 100); width: 350px;*/
-
-/* margin: 10px; */
-/* text-align: center; */
-/* left: 330px;  height: 520px;
-
-  border: 1px solid #e1e1e1;
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  opacity: 0;
-}
-
-div.zoh2 {
-  width: 660px;
-  margin: 10px;
-  /* right: 10px; */
-/* text-align: center; */
-/* left: 30px; */
-/* border: 1px solid green; 
-  height: 520px;
-
-} 
-
-div.zoh3 {
-  background-color: #f2f2f2; 
-  width: 150px;
-  margin: 10px; 
-  text-align: center;
-  line-height: 25px;
-  left: 330px;
-  height: 520px;
-  border: 1px solid #e1e1e1;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
-}*/
 
 div.shape {
   line-height: 3.2;
@@ -369,19 +334,15 @@ span.file-name {
   width: 64px;
   height: 54px;
   margin: 4px;
-  clear: both;
   border: 0;
   border-radius: 10px;
-  outline: none;
-  background-color: #a44;
+
 }
 
 .toolbar button.active,
 .toolbar button:hover {
-  background-color: #c11;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  box-shadow: inset 5px 0 10px 0 rgba(50, 50, 50, .2);
+    background-color: #ff1;
+  box-shadow: 5px 0 10px 0 #aa1;
 }
 
 .toolbar button img,
@@ -430,7 +391,7 @@ div.shapepopup {
   border: 1px solid #ddd;
   transition: all .4s;
   box-sizing: border-box;
-  font-size: 13px;
+  font-size: 1.2em;
   color: #795100;
   position: absolute;
 }
@@ -445,7 +406,6 @@ div.shapepopup {
 }
 
 .shapepopup .title {
-  font-size: 14px;
   font-weight: 700;
   margin: 0;
   padding-bottom: 10px;
@@ -484,12 +444,10 @@ div.shapepopup {
 .shapepopup .input-container label {
   width: 45%;
   text-align: left;
-  font-size: 1rem;
   margin-left: 10px;
 }
 
 .shapepopup .input-container select {
-  width: 50%;
   height: 29px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -518,7 +476,6 @@ div.shapepopup {
   border-radius: 6px;
   color: #ffffff;
   border: 1px solid transparent;
-  font-size: 16px;
   cursor: pointer;
   outline: none;
 }
@@ -555,7 +512,7 @@ div.zohpopup {
   border: 1px solid #ddd;
   transition: all .4s;
   box-sizing: border-box;
-  font-size: 13px;
+  font-size: 1.2rem;
   color: #795100;
   position: absolute;
 }
@@ -570,7 +527,6 @@ div.zohpopup {
 }
 
 .zohpopup .title {
-  font-size: 14px;
   font-weight: 700;
   margin: 0;
   padding-bottom: 10px;
@@ -610,7 +566,6 @@ div.zohpopup {
 .zohpopup .input-container label {
   width: 60%;
   text-align: left;
-  font-size: 1rem;
   margin-left: 10px;
 }
 
@@ -644,7 +599,6 @@ div.zohpopup {
   border-radius: 6px;
   color: #ffffff;
   border: 1px solid transparent;
-  font-size: 16px;
   cursor: pointer;
   outline: none;
 }
@@ -679,7 +633,7 @@ div.canpropopup {
   border: 1px solid #ddd;
   transition: all .4s;
   box-sizing: border-box;
-  font-size: 13px;
+  font-size: 1.2em;
   color: #795100;
   position: absolute;
 }
@@ -694,7 +648,6 @@ div.canpropopup {
 }
 
 .canpropopup .title {
-  font-size: 14px;
   font-weight: 700;
   margin: 0;
   padding-bottom: 10px;
@@ -734,7 +687,6 @@ div.canpropopup {
 .canpropopup .input-container label {
   width: 60%;
   text-align: left;
-  font-size: 1rem;
   margin-left: 10px;
 }
 
@@ -768,7 +720,6 @@ div.canpropopup {
   border-radius: 6px;
   color: #ffffff;
   border: 1px solid transparent;
-  font-size: 16px;
   cursor: pointer;
   outline: none;
 }
