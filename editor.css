@@ -547,6 +547,7 @@ div.zohpopup {
   text-align: center;
   left: 10px;
   height: 82vh;
+  overflow-y: scroll;
   border: 1px solid #e1e1e1;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
