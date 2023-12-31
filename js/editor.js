@@ -452,39 +452,53 @@ canvas.uniformScaling = true;
 fabric.perfLimitSizeTotal = 0xd693a40;
 fabric.maxCacheSideLimit = 0xa7d8c0;
 
+function getTextProps() {
+  return {
+    'fill': document.getElementById("colorPicker").value,
+    'fontFamily': document.getElementById("font-family").value,
+    'fontSize': document.getElementById('text-font-size').value,
+    'fontWeight': document.getElementById("text-cmd-bold").checked ? 'bold' : '',
+    'fontStyle': document.getElementById('text-cmd-italic').checked ? 'italic' : '',
+    'underline': document.getElementById('text-cmd-underline').checked,
+    'linethrough': document.getElementById('text-cmd-linethrough').checked,
+    'overline': document.getElementById('text-cmd-overline').checked,
+    'stroke': document.getElementById('text-stroke-color').value,
+    'strokeWidth': document.getElementById('text-stroke-width').value,
+    'textBackgroundColor': document.getElementById('text-lines-bg-color').value
+  };
+}
+
 const addtext = _0x47e60d => {
   const _0x9e4222 = _0x47e60d.getCenter();
-  const _0x23d6ec = new fabric.IText("Tap and Type", {
+  let props = getTextProps();
+  const _0x77f313 = new fabric.IText("Tap and Type", {
     'left': 0x32,
     'top': 0x64,
-    'fontFamily': "Arial",
-    'fill': "#333",
-    'fontSize': 45,
     'left': _0x9e4222.left,
     'top': _0x9e4222.top,
     'originX': 'center',
     'originY': "center"
   });
+  _0x77f313.set(props);
   _0x47e60d.add(_0x23d6ec);
   _0x47e60d.centerObject(_0x23d6ec);
   _0x47e60d.setActiveObject(_0x23d6ec);
   _0x47e60d.requestRenderAll();
 };
 const addtextarea = _0x1f3b56 => {
+  let props = getTextProps();
   const _0x301fb4 = _0x1f3b56.getCenter();
   const _0x77f313 = new fabric.Textbox("The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.", {
     'width': 0xc8,
     'height': 0xc8,
     'left': 0x32,
     'top': 0x64,
-    'fontFamily': 'Arial',
-    'fill': '#333',
-    'fontSize': 0x10,
     'left': _0x301fb4.left,
     'top': _0x301fb4.top,
     'originX': "center",
     'originY': "center"
   });
+  _0x77f313.set(props);
   _0x1f3b56.add(_0x77f313);
   _0x1f3b56.centerObject(_0x77f313);
   _0x1f3b56.setActiveObject(_0x77f313);
