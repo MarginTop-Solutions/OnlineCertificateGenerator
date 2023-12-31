@@ -36,12 +36,17 @@ div.zoh0 {
 }
 
 .Footer {
+  font-size: 18px;
   position: fixed;
   bottom: 20px;
   width: 100%;
   text-align: center;
+  color: green;
 }
 
+.Footer a{
+  text-decoration: none;
+}
 /* div.zoh1 {
   /* background-color: rgb(190, 100, 100); width: 350px;*/
 
@@ -416,6 +421,7 @@ div.shapepopup {
   margin: 10px;
   text-align: center;
   left: 10px;
+  overflow-y: scroll;
   height: 82vh;
   border: 1px solid #e1e1e1;
   background-color: #fff;
