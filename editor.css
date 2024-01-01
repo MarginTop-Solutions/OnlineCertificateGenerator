@@ -1,3 +1,7 @@
+body{
+  overflow: hidden;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -37,7 +41,8 @@ div.zoh0 {
 
 .Footer {
   font-size: 18px;
-  position: fixed;
+  margin-top: 50px;
+  /* position: fixed; */
   bottom: 20px;
   width: 100%;
   text-align: center;
