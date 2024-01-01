@@ -309,7 +309,6 @@ function deleteSelectedObjectsFromCanvas() {
   var _0x4e29f9 = canvas.getActiveObject();
   if (_0x4e29f9.type === "activeSelection") {
     _0x4e29f9.forEachObject(function (_0x43847d) {
-      console.log(_0x43847d);
       canvas.remove(_0x43847d);
     });
   } else {
@@ -734,7 +733,7 @@ fabric.Object.prototype.controls.deleteControl = new fabric.Control({
   'offsetY': -0x10,
   'offsetX': 0x10,
   'cursorStyle': "pointer",
-  'mouseUpHandler': deleteObject,
+  'mouseUpHandler': deleteSelectedObjectsFromCanvas,
   'render': renderIcon(deleteImg),
   'cornerSize': 0x18
 });
@@ -980,8 +979,8 @@ function updateObjectProperty(object) {
   objprop.querySelector("#objectWidth").value = pxToCm(object.width * object.scaleX).toFixed(2);
   objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY).toFixed(2);
   objprop.querySelector("#control_border").value = object.strokeWidth;
-  objprop.querySelector("#strokeColor").value = object.stroke === "black" ? "#000000" : object.stroke;
-  objprop.querySelector("#colorPicker1").value = object.fill;
+  objprop.querySelector("#strokeColor").value = object.stroke === "black" ? "#000000" : (object.type === 'activeSelection' ? '#000000' : object.stroke);
+  objprop.querySelector("#colorPicker1").value = object.type === 'activeSelection' ? '#FFFFFF' : object.fill;
 }
 
 canvas.on("selection:cleared", function () {
