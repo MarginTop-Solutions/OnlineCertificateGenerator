@@ -878,19 +878,33 @@ for (var max = radios5.length; i < max; i++) {
     }
     canvas.renderAll();
   };
-}
-;
+};
+
+function setActiveProps(prop, value) {
+  let _o = canvas.getActiveObject();
+  if (_o.type == "group") {
+    _o._objects.forEach(function (o) { o.set(prop, value) });
+    let l = _o.left;
+    let t = _o.top;
+    _o._calcBounds();
+    _o.set({ left: l, top: t }).setCoords();
+    _o.canvas.renderAll();
+  } else {
+    _o.set(prop, value);
+  }
+};
+
 document.getElementById("colorPicker").onchange = function () {
   console.log(this.value);
-  canvas.getActiveObject().set("fill", this.value);
+  setActiveProps("fill", this.value);
   canvas.renderAll();
 };
 document.getElementById("font-family").onchange = function () {
-  canvas.getActiveObject().set('fontFamily', this.value);
+  setActiveProps('fontFamily', this.value);
   canvas.renderAll();
 };
 document.getElementById("text-font-size").onchange = function () {
-  canvas.getActiveObject().set('fontSize', this.value);
+  setActiveProps('fontSize', this.value);
   canvas.renderAll();
 };
 function txtwidplus(_0x192261) {
@@ -900,7 +914,7 @@ function txtwidplus(_0x192261) {
   _0xf72f5d = _0xf72f5d + 0x1;
   result.value = _0xf72f5d;
   console.log(_0xf72f5d);
-  canvas.getActiveObject().set("fontSize", result.value);
+  setActiveProps("fontSize", result.value);
   canvas.renderAll();
 }
 function txtwidminus(_0x13e0cf) {
@@ -910,7 +924,7 @@ function txtwidminus(_0x13e0cf) {
   _0x55e078 = _0x55e078 - 0x1;
   result.value = _0x55e078;
   console.log(_0x55e078);
-  canvas.getActiveObject().set("fontSize", result.value);
+  setActiveProps("fontSize", result.value);
   canvas.renderAll();
 }
 function txtstrokeplus(_0x24a5ed) {
@@ -920,7 +934,7 @@ function txtstrokeplus(_0x24a5ed) {
   _0x224209 = _0x224209 + 0x1;
   result.value = _0x224209;
   console.log(_0x224209);
-  canvas.getActiveObject().set("strokeWidth", result.value);
+  setActiveProps("strokeWidth", result.value);
   canvas.renderAll();
 }
 function txtstrokeminus(_0x36e851) {
@@ -930,36 +944,36 @@ function txtstrokeminus(_0x36e851) {
   _0x1f2c00 = _0x1f2c00 - 0x1;
   result.value = _0x1f2c00;
   console.log(_0x1f2c00);
-  canvas.getActiveObject().set("strokeWidth", result.value);
+  setActiveProps("strokeWidth", result.value);
   canvas.renderAll();
 }
 document.getElementById('text-align').onchange = function () {
-  canvas.getActiveObject().set("textAlign", this.value);
+  setActiveProps("textAlign", this.value);
   canvas.renderAll();
 };
 document.getElementById("text-lines-bg-color").onchange = function () {
   console.log(this.value);
-  canvas.getActiveObject().set('textBackgroundColor', this.value);
+  setActiveProps('textBackgroundColor', this.value);
   canvas.renderAll();
 };
 document.getElementById("text-stroke-color").onchange = function () {
   console.log(this.value);
-  canvas.getActiveObject().set("stroke", this.value);
+  setActiveProps("stroke", this.value);
   canvas.renderAll();
 };
 document.getElementById("colorPicker1").onchange = function () {
   console.log(this.value);
-  canvas.getActiveObject().set("fill", this.value);
+  setActiveProps("fill", this.value);
   canvas.renderAll();
 };
 document.getElementById("strokeColor").onchange = function () {
   console.log(this.value);
-  canvas.getActiveObject().set("stroke", this.value);
+  setActiveProps("stroke", this.value);
   canvas.renderAll();
 };
 $("#control_border").change(function () {
   var _0x3ba1a0 = parseInt($(this).val());
-  canvas.getActiveObject().set({ 'strokeWidth': _0x3ba1a0 });
+  setActiveProps('strokeWidth', _0x3ba1a0);
   canvas.renderAll();
 });
 var objectToSendBack;
