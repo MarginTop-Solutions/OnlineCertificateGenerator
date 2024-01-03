@@ -359,7 +359,8 @@ imageSaver.addEventListener("click", saveImage, false);
 function saveImage(_0x2895f4) {
   this.href = canvas.toDataURL({
     'format': "png",
-    'quality': 0.8
+    'quality': 1,
+    'multiplier': 8
   });
   this.download = "canvas.png";
 }
