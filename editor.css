@@ -440,10 +440,13 @@ div.shapepopup {
 
 .shapepopup .input-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 0.5em;
+  padding: 0.1em;
   border-radius: 6px;
+  margin-top: 0;
   background-color: #0001;
+  /* width: fit-content; */
 }
 
 .shapepopup .input-container label {
@@ -466,6 +469,7 @@ div.shapepopup {
 .shapepopup .input-container .custom-number-input {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1px;
   height: 30px;
   background-color: #fff6;
@@ -626,11 +630,12 @@ div.zohpopup {
 div.canpropopup {
   display: none;
   padding: 1.5em 1em;
-  width: 25vw;
+  width: auto;
+  height: auto;
+  max-width: 25vw;
   margin: 10px;
   text-align: center;
   left: 10px;
-  height: 82vh;
   border: 1px solid #e1e1e1;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
@@ -683,10 +688,11 @@ div.canpropopup {
   display: flex;
   gap: 4px;
   align-items: center;
-  padding: 0.5em;
-  margin: 2em;
+  padding: 0.1em;
+  margin-top: 1em;
   border-radius: 6px;
   background-color: #0001;
+  width: fit-content;
 }
 
 .canpropopup .input-container label {

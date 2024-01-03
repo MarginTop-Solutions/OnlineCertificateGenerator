@@ -99,20 +99,22 @@
   <div class="extended-buttons">
     <div class="tooltip">
       <span class="tooltiptext">Upload JSON</span>
+      <a id="JSONUpload" href="#">
       <button id="uploadJSON">
         <div class="upload-btn-wrapper">
           <img src="Icons/easel3.svg" alt="Upload" width="32" height="32">
           <input id="jsonFileInput" type="file" accept=".json">
         </div>
       </button>
+      </a>
     </div>
     <div class="tooltip">
       <span class="tooltiptext">Export JSON</span>
-      <button id="saveJSON">
-        <a id="JSONDownload" href="#">
-          <img src="Icons/eject.svg" alt="Bootstrap" width="32" height="32">
-        </a>
-      </button>
+      <a id="JSONDownload" href="#">
+        <button id="saveJSON">
+            <img src="Icons/eject.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </a>
     </div>
     <div class="tooltip">
       <span class="tooltiptext">Upload Image</span>
@@ -125,14 +127,14 @@
     </div>
     <div class="tooltip">
       <span class="tooltiptext">Save</span>
-      <button id="save1">
-        <a id="lnkDownload" href="#">
-          <img src="Icons/download.svg" alt="Bootstrap" width="32" height="32">
-        </a>
-      </button>
+      <a id="lnkDownload" href="#">
+        <button id="save1">
+            <img src="Icons/download.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </a>
     </div>
     <div class="tooltip">
-      <span class="tooltiptext">Canvas Settings</span>
+      <span class="tooltiptext">Settings</span>
       <button id="setting1" onclick="openForm()">
         <img src="Icons/gear.svg" alt="Bootstrap" width="32" height="32">
       </button>
@@ -271,9 +273,8 @@
 
 <div class="canpropopup" id="myform">
   <button class="increase" onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
-  <h1>Canvas Properties</h1>
+  <h3>Canvas Properties</h3>
   <hr>
-
   <div class="input-container">
     <label>Canvas Width(cm)</label>
     <div class="custom-number-input">
@@ -284,7 +285,7 @@
   </div>
 
   <div class="input-container">
-    <label>Canvas Height</label>
+    <label>Canvas Height(cm)</label>
     <div class="custom-number-input">
       <button class="decrease" onclick="substcanhie()">-</button>
       <input min="1" placeholder="14" value="14" onchange="updtcanh(this.value)" id="enterCanvasHeight">
@@ -345,7 +346,7 @@
     </button>
   </div>
   <hr>
-  <h1 style="margin-top: 1.5em; margin-bottom: 1em;">Objects Settings</h1>
+  <h3 style="margin-top: 1em; margin-bottom: 1em;">Objects Settings</h3>
   <div style="overflow-y: hidden; display: flex; flex-direction: column; justify-content: space-around; gap: 2em;">
     <div class="input-container">
       <label>Object Width(cm)</label>
@@ -377,7 +378,7 @@
       </div>
     </div>
     <div class="input-container">
-      <label>Color</label>
+      <label for="text-lines-bg-color">Color</label>
       <div class="custom-number-input">
         <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
       </div>
