@@ -686,13 +686,14 @@ div.canpropopup {
 
 .canpropopup .input-container {
   display: flex;
+  justify-content: space-between;
   gap: 4px;
   align-items: center;
   padding: 0.1em;
   margin-top: 1em;
   border-radius: 6px;
   background-color: #0001;
-  width: fit-content;
+  /* width: fit-content; */
 }
 
 .canpropopup .input-container label {
