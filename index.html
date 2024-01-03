@@ -40,127 +40,128 @@
 
 
 <!-- <body onload="ifm.src='upload.html'"> -->
+
 <body>
-<div class="toolbar" id="toolbar">
-  <div class="main-buttons">
-    <!-- aria-label="..." on the control -->
-    <!-- <div class="tooltip">
+  <div class="toolbar" id="toolbar">
+    <div class="main-buttons">
+      <!-- aria-label="..." on the control -->
+      <!-- <div class="tooltip">
       <span class="tooltiptext">Add Text</span>
 
       <button id="text1" onclick="addtext(canvas)">
         <img src="Icons/fonts.svg" alt="Bootstrap" width="32" height="32">
       </button>
     </div> -->
-    <div class="tooltip">
-      <span class="tooltiptext">Add Textarea</span>
-      <button id="textarea1" onclick="addtextarea(canvas)">
-        <img src="Icons/textarea-t.svg" alt="Bootstrap" width="32" height="32">
-      </button>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Add Objects</span>
+      <div class="tooltip">
+        <span class="tooltiptext">Add Textarea</span>
+        <button id="textarea1" onclick="addtextarea(canvas)">
+          <img src="Icons/textarea-t.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Add Objects</span>
 
-      <button id="shapes1" onclick="openshapespop()">
-        <img src="Icons/bounding-box-circles.svg" alt="Bootstrap" width="32" height="32">
-      </button>
+        <button id="shapes1" onclick="openshapespop()">
+          <img src="Icons/bounding-box-circles.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Group</span>
+        <button id="group1" onclick="groupObjects()">
+          <img src="Icons/group-43.svg" alt="Bootstrap" width="39" height="39">
+        </button>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Ungroup</span>
+        <button id="ungroup1" onclick="ungroupObjects()">
+          <img src="Icons/ungroup.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Bring to Front</span>
+        <button id="front1" onclick="sendSelectedObjectforward()">
+          <img src="Icons/front.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Sent Back</span>
+        <button id="back1" onclick="sendSelectedObjectBack()">
+          <img src="Icons/back.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Delete</span>
+        <button id="delete1" onclick="deleteSelectedObjectsFromCanvas()">
+          <img src="Icons/trash.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
     </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Delete</span>
-      <button id="delete1" onclick="deleteSelectedObjectsFromCanvas()">
-        <img src="Icons/trash.svg" alt="Bootstrap" width="32" height="32">
-      </button>
+    <div class="logo">
+      <img src="https://m.verifyd.org/file/engines/1/verifyd-icon.svg" height="62" width="62" alt="">
     </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Group</span>
-      <button id="group1" onclick="groupObjects()">
-        <img src="Icons/group-43.svg" alt="Bootstrap" width="39" height="39">
-      </button>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Ungroup</span>
-      <button id="ungroup1" onclick="ungroupObjects()">
-        <img src="Icons/ungroup.svg" alt="Bootstrap" width="32" height="32">
-      </button>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Bring to Front</span>
-      <button id="front1" onclick="sendSelectedObjectforward()">
-        <img src="Icons/front.svg" alt="Bootstrap" width="32" height="32">
-      </button>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Sent Back</span>
-      <button id="back1" onclick="sendSelectedObjectBack()">
-        <img src="Icons/back.svg" alt="Bootstrap" width="32" height="32">
-      </button>
-    </div>
-  </div>
-  <div class="logo">
-    <img src="https://m.verifyd.org/file/engines/1/verifyd-icon.svg" height="62" width="62" alt="">
-  </div>
-  <div class="extended-buttons">
-    <div class="tooltip">
-      <span class="tooltiptext">Upload JSON</span>
-      <a id="JSONUpload" href="#">
-      <button id="uploadJSON">
-        <div class="upload-btn-wrapper">
-          <img src="Icons/easel3.svg" alt="Upload" width="32" height="32">
-          <input id="jsonFileInput" type="file" accept=".json">
-        </div>
-      </button>
-      </a>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Export JSON</span>
-      <a id="JSONDownload" href="#">
-        <button id="saveJSON">
+    <div class="extended-buttons">
+      <div class="tooltip">
+        <span class="tooltiptext">Upload JSON</span>
+        <a id="JSONUpload" href="#">
+          <button id="uploadJSON">
+            <div class="upload-btn-wrapper">
+              <img src="Icons/easel3.svg" alt="Upload" width="32" height="32">
+              <input id="jsonFileInput" type="file" accept=".json">
+            </div>
+          </button>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Export JSON</span>
+        <a id="JSONDownload" href="#">
+          <button id="saveJSON">
             <img src="Icons/eject.svg" alt="Bootstrap" width="32" height="32">
+          </button>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Upload Image</span>
+        <button id="upload1">
+          <div class="upload-btn-wrapper">
+            <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+            <Input id="myImg" type="file" accept="Image/">
+          </div>
         </button>
-      </a>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Upload Image</span>
-      <button id="upload1">
-        <div class="upload-btn-wrapper">
-          <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
-          <Input id="myImg" type="file" accept="Image/">
-        </div>
-      </button>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Save</span>
-      <a id="lnkDownload" href="#">
-        <button id="save1">
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Save</span>
+        <a id="lnkDownload" href="#">
+          <button id="save1">
             <img src="Icons/download.svg" alt="Bootstrap" width="32" height="32">
+          </button>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="tooltiptext">Settings</span>
+        <button id="setting1" onclick="openForm()">
+          <img src="Icons/gear.svg" alt="Bootstrap" width="32" height="32">
         </button>
-      </a>
-    </div>
-    <div class="tooltip">
-      <span class="tooltiptext">Settings</span>
-      <button id="setting1" onclick="openForm()">
-        <img src="Icons/gear.svg" alt="Bootstrap" width="32" height="32">
-      </button>
-    </div>
-    <!-- <div class="tooltip">
+      </div>
+      <!-- <div class="tooltip">
       <span class="tooltiptext">Restore Canvas</span>
       <button id="clear1" onclick="restoreCanvas(canvas, svgState, bgUrl)">
         <img src="Icons/arrow-counterclockwise.svg" alt="Bootstrap" width="32" height="32">
       </button>
     </div> -->
-    <div class="tooltip">
-      <span class="tooltiptext">Clear Canvas</span>
-      <button id="clear1" onclick="clearCanvas(canvas, svgState)">
-        <img src="Icons/x-lg.svg" alt="Bootstrap" width="32" height="32">
-      </button>
+      <div class="tooltip">
+        <span class="tooltiptext">Clear Canvas</span>
+        <button id="clear1" onclick="clearCanvas(canvas, svgState)">
+          <img src="Icons/x-lg.svg" alt="Bootstrap" width="32" height="32">
+        </button>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="zoh0" style="margin-top: 10px;">
-  <div class="zoh2" id="userInputWindow" style="margin: auto;">
-    <canvas id="zbcanvas" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);"></canvas>
-  </div>
-  <!--<div class="zoh3">
+  <div class="zoh0" style="margin-top: 10px;">
+    <div class="zoh2" id="userInputWindow" style="margin: auto;">
+      <canvas id="zbcanvas" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);"></canvas>
+    </div>
+    <!--<div class="zoh3">
      <div>
 <h5 style="margin-block-start: 0.5em; margin-block-end: 0.5em; font-size: 36px;">Images</h5>
 <div class="sidebar">
@@ -170,234 +171,242 @@
 <iframe id="ifm" style="height: 100px; width:270px; border: none;" title="Iframe Example"></iframe>
 </div>
   </div> -->
-</div>
-<div class="Footer">
-  Developed with love &#9829 by
-  <a href="https://margintopsolutions.com.np/">MarginTop Solutions</a>
-</div>
+  </div>
+  <div class="Footer">
+    Developed with love &#9829 by
+    <a href="https://margintopsolutions.com.np/">MarginTop Solutions</a>
+  </div>
 
-<div id="mydiv" class="zohpopup">
-  <button class="increase" onclick="closediv()" style="float: right;margin-top: 10px;">X</button>
-  <h1>Text Properties</h1>
-  <hr>
+  <div id="mydiv" class="zohpopup">
+    <button class="increase" onclick="closediv()" style="float: right;margin-top: 10px;">X</button>
+    <h1>Text Properties</h1>
+    <hr>
 
-  <div id="text-controls-additional" class="zohinpop">
-    <div class="input-container">
-      <label for="text-lines-bg-color">Text Color</label>
-      <div class="custom-number-input">
-        <input id="colorPicker" value="#000000" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
-      </div>
-    </div>
-    <div class="input-container">
-      <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
-        <div>
-          <input type='checkbox' name='fonttype' id="text-cmd-bold">Bold</input>
+    <div id="text-controls-additional" class="zohinpop">
+      <div class="input-container">
+        <label for="text-lines-bg-color">Text Color</label>
+        <div class="custom-number-input">
+          <input id="colorPicker" value="#000000" data-jscolor="{}" id="text-color" size="10"
+            style="border-radius: 4px;">
         </div>
-        <div>
-          <input type='checkbox' name='fonttype' id="text-cmd-italic">Italic</input>
+      </div>
+      <div class="input-container">
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+          <div>
+            <input type='checkbox' name='fonttype' id="text-cmd-bold">Bold</input>
+          </div>
+          <div>
+            <input type='checkbox' name='fonttype' id="text-cmd-italic">Italic</input>
+          </div>
+          <div>
+            <input type='checkbox' name='fonttype' id="text-cmd-underline">Underline</input>
+          </div>
+          <div>
+            <input type='checkbox' name='fonttype' id="text-cmd-linethrough">Linethrough</input>
+          </div>
+          <div>
+            <input type='checkbox' name='fonttype' id="text-cmd-overline">Overline</input>
+          </div>
+
         </div>
-        <div>
-          <input type='checkbox' name='fonttype' id="text-cmd-underline">Underline</input>
+      </div>
+
+      <div class="input-container">
+        <label for="font-family" style="display:inline-block">Font family:</label>
+        <select id="font-family">
+          <option value="system-ui" selected>same as system</option>
+          <option value="arial">Arial</option>
+          <option value="helvetica">Helvetica</option>
+          <option value="myriad pro">Myriad Pro</option>
+          <option value="delicious">Delicious</option>
+          <option value="verdana">Verdana</option>
+          <option value="georgia">Georgia</option>
+          <option value="courier">Courier</option>
+          <option value="comic sans ms">Comic Sans MS</option>
+          <option value="impact">Impact</option>
+          <option value="cursive">Cursive</option>
+          <option value="serif">Serif</option>
+          <option value="sans-serif">Sans-serif</option>
+          <option value="math">Math</option>
+          <option value="fantasy">fantasy</option>
+          <option value="monospace">monospace</option>
+          <option value="emoji">emoji</option>
+          <option value="sofia">Sofia</option>
+        </select>
+      </div>
+
+      <div class="input-container">
+        <label for="text-align" style="display:inline-block">Text align:</label>
+        <select id="text-align">
+          <option value="left">Left</option>
+          <option value="center">Center</option>
+          <option value="right">Right</option>
+          <option value="justify">Justify</option>
+        </select>
+      </div>
+
+
+      <div class="input-container">
+        <label>Font Size</label>
+        <div class="custom-number-input">
+          <button class="decrease" onclick="txtwidminus(this.val)">-</button>
+          <input min="1" value="16" id="text-font-size">
+          <button class="increase" onclick="txtwidplus(this.val)">+</button>
         </div>
-        <div>
-          <input type='checkbox' name='fonttype' id="text-cmd-linethrough">Linethrough</input>
+      </div>
+
+
+      <div class="input-container">
+        <label for="text-lines-bg-color">Back Color</label>
+        <div class="custom-number-input">
+          <input id="text-lines-bg-color" value="#ffffff" data-jscolor="{}" id="text-color" size="10"
+            style="border-radius: 4px;">
         </div>
-        <div>
-          <input type='checkbox' name='fonttype' id="text-cmd-overline">Overline</input>
+      </div>
+
+      <div class="input-container">
+        <label for="text-lines-bg-color">Stroke Color</label>
+        <div class="custom-number-input">
+          <input id="text-stroke-color" value="#000000" data-jscolor="{}" id="text-color" size="10"
+            style="border-radius: 4px;">
         </div>
-
       </div>
+
+      <div class="input-container">
+        <label>Stroke Width</label>
+        <div class="custom-number-input">
+          <button class="decrease" onclick="txtstrokeminus(this.val)">-</button>
+          <input min="1" value="1" id="text-stroke-width">
+          <button class="increase" onclick="txtstrokeplus(this.val)">+</button>
+        </div>
+      </div>
+      <hr>
     </div>
+  </div>
 
+  <div class="canpropopup" id="myform">
+    <button onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
+    <h3>Canvas Properties</h3>
+    <hr>
     <div class="input-container">
-      <label for="font-family" style="display:inline-block">Font family:</label>
-      <select id="font-family">
-        <option value="system-ui" selected>same as system</option>
-        <option value="arial">Arial</option>
-        <option value="helvetica">Helvetica</option>
-        <option value="myriad pro">Myriad Pro</option>
-        <option value="delicious">Delicious</option>
-        <option value="verdana">Verdana</option>
-        <option value="georgia">Georgia</option>
-        <option value="courier">Courier</option>
-        <option value="comic sans ms">Comic Sans MS</option>
-        <option value="impact">Impact</option>
-        <option value="cursive">Cursive</option>
-        <option value="serif">Serif</option>
-        <option value="sans-serif">Sans-serif</option>
-        <option value="math">Math</option>
-        <option value="fantasy">fantasy</option>
-        <option value="monospace">monospace</option>
-        <option value="emoji">emoji</option>
-        <option value="sofia">Sofia</option>
-      </select>
-    </div>
-
-    <div class="input-container">
-      <label for="text-align" style="display:inline-block">Text align:</label>
-      <select id="text-align">
-        <option value="left">Left</option>
-        <option value="center">Center</option>
-        <option value="right">Right</option>
-        <option value="justify">Justify</option>
-      </select>
-    </div>
-
-
-    <div class="input-container">
-      <label>Font Size</label>
+      <label>Canvas Width(cm)</label>
       <div class="custom-number-input">
-        <button class="decrease" onclick="txtwidminus(this.val)">-</button>
-        <input min="1" value="16" id="text-font-size">
-        <button class="increase" onclick="txtwidplus(this.val)">+</button>
-      </div>
-    </div>
-
-
-    <div class="input-container">
-      <label for="text-lines-bg-color">Back Color</label>
-      <div class="custom-number-input">
-        <input id="text-lines-bg-color" value="#ffffff" data-jscolor="{}" id="text-color" size="10"
-          style="border-radius: 4px;">
+        <button onclick="substcan()">-</button>
+        <input min="1" placeholder="18" value="18" onchange="updtcanw(this.value)" id="enterCanvasWidth">
+        <button onclick="additioncan()">+</button>
       </div>
     </div>
 
     <div class="input-container">
-      <label for="text-lines-bg-color">Stroke Color</label>
+      <label>Canvas Height(cm)</label>
       <div class="custom-number-input">
-        <input id="text-stroke-color" value="#000000" data-jscolor="{}" id="text-color" size="10"
-          style="border-radius: 4px;">
+        <button onclick="substcanhie()">-</button>
+        <input min="1" placeholder="14" value="14" onchange="updtcanh(this.value)" id="enterCanvasHeight">
+        <button onclick="additioncanhie()">+</button>
       </div>
     </div>
 
     <div class="input-container">
-      <label>Stroke Width</label>
+      <label>Background Color</label>
       <div class="custom-number-input">
-        <button class="decrease" onclick="txtstrokeminus(this.val)">-</button>
-        <input min="1" value="1" id="text-stroke-width">
-        <button class="increase" onclick="txtstrokeplus(this.val)">+</button>
+        <input id="colorPicker2" value="" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
       </div>
+    </div>
+
+    <div class="input-container">
+      <label>Background Image</label>
+      <button id="upload1">
+        <div class="upload-btn-wrapper">
+          <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+          <Input id="file2" type="file" accept="Image/">
+        </div>
+      </button>
+    </div>
+
+    <div style="margin-top: 1rem;">
+      <button onclick="clearbgImage()"
+        style="background: #760505; padding: 10px; color: white; font-size: 1.2rem; border-radius: 14px;">
+        Clear BG Image
+      </button>
     </div>
     <hr>
   </div>
-</div>
 
-<div class="canpropopup" id="myform">
-  <button class="increase" onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
-  <h3>Canvas Properties</h3>
-  <hr>
-  <div class="input-container">
-    <label>Canvas Width(cm)</label>
-    <div class="custom-number-input">
-      <button class="decrease" onclick="substcan()">-</button>
-      <input min="1" placeholder="18" value="18" onchange="updtcanw(this.value)" id="enterCanvasWidth">
-      <button class="increase" onclick="additioncan()">+</button>
+  <div id="shapespop" class="shapepopup">
+    <button class="increase" onclick="closeshapespop()" style="float: right">X</button>
+    <h1>Objects</h1>
+    <hr>
+    <div class="shape">
+      <button class="add_shape" id="circle" data-rel="circle">
+        <img src="Icons/circle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="rectangle" data-rel="rectangle">
+        <img src="Icons/square.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="text1" data-rel="ellipse">
+        <img src="Icons/ellipse.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="triangle" data-rel="triangle">
+        <img src="Icons/triangle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="hexagon" data-rel="hexagon">
+        <img src="Icons/hexagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="star" data-rel="star">
+        <img src="Icons/star.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="pentagon" data-rel="pentagon">
+        <img src="Icons/pentagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="diamond" data-rel="diamond">
+        <img src="Icons/diamond.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="line" data-rel="line">
+        <img src="Icons/line.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
     </div>
-  </div>
-
-  <div class="input-container">
-    <label>Canvas Height(cm)</label>
-    <div class="custom-number-input">
-      <button class="decrease" onclick="substcanhie()">-</button>
-      <input min="1" placeholder="14" value="14" onchange="updtcanh(this.value)" id="enterCanvasHeight">
-      <button class="increase" onclick="additioncanhie()">+</button>
-    </div>
-  </div>
-
-  <div class="input-container">
-    <label for="text-lines-bg-color">Background Color</label>
-    <div class="custom-number-input">
-      <input id="colorPicker2" value="" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
-    </div>
-  </div>
-
-  <div class="input-container">
-    <label for="text-lines-bg-color">Background Image</label>
-    <button id="upload1">
-      <div class="upload-btn-wrapper">
-        <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
-        <Input id="file2" type="file" accept="Image/">
+    <hr>
+    <h3 style="margin-top: 1em; margin-bottom: 1em;">Objects Settings</h3>
+    <div style="overflow-y: hidden; display: flex; flex-direction: column; justify-content: space-around; gap: 2em;">
+      <div class="input-container">
+        <label>Object Width(cm)</label>
+        <div class="custom-number-input">
+          <button class="decrease" onclick="Osubstcan()">-</button>
+          <input min="1" placeholder="6" value="6" onchange="OcanWit(this.value)" id="objectWidth">
+          <button class="increase" onclick="Oadditioncan()">+</button>
+        </div>
       </div>
-    </button>
-  </div>
-  <hr>
-</div>
 
-<div id="shapespop" class="shapepopup">
-  <button class="increase" onclick="closeshapespop()" style="float: right">X</button>
-  <h1>Objects</h1>
-  <hr>
-  <div class="shape">
-    <button class="add_shape" id="circle" data-rel="circle">
-      <img src="Icons/circle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="rectangle" data-rel="rectangle">
-      <img src="Icons/square.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="text1" data-rel="ellipse">
-      <img src="Icons/ellipse.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="triangle" data-rel="triangle">
-      <img src="Icons/triangle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="hexagon" data-rel="hexagon">
-      <img src="Icons/hexagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="star" data-rel="star">
-      <img src="Icons/star.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="pentagon" data-rel="pentagon">
-      <img src="Icons/pentagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="diamond" data-rel="diamond">
-      <img src="Icons/diamond.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-    <button class="add_shape" id="line" data-rel="line">
-      <img src="Icons/line.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-    </button>
-  </div>
-  <hr>
-  <h3 style="margin-top: 1em; margin-bottom: 1em;">Objects Settings</h3>
-  <div style="overflow-y: hidden; display: flex; flex-direction: column; justify-content: space-around; gap: 2em;">
-    <div class="input-container">
-      <label>Object Width(cm)</label>
-      <div class="custom-number-input">
-        <button class="decrease" onclick="Osubstcan()">-</button>
-        <input min="1" placeholder="6" value="6" onchange="OcanWit(this.value)" id="objectWidth">
-        <button class="increase" onclick="Oadditioncan()">+</button>
+      <div class="input-container">
+        <label>Object Height(cm)</label>
+        <div class="custom-number-input">
+          <button class="decrease" onclick="Osubstcanhie()">-</button>
+          <input min="1" placeholder="6" value="6" onchange="Ocanhie(this.value)" id="objectHeight">
+          <button class="increase" onclick="Oadditioncanhie()">+</button>
+        </div>
       </div>
-    </div>
-
-    <div class="input-container">
-      <label>Object Height(cm)</label>
-      <div class="custom-number-input">
-        <button class="decrease" onclick="Osubstcanhie()">-</button>
-        <input min="1" placeholder="6" value="6" onchange="Ocanhie(this.value)" id="objectHeight">
-        <button class="increase" onclick="Oadditioncanhie()">+</button>
+      <div class="input-container">
+        <label>Stroke Width</label>
+        <div class="custom-number-input" bind-value-to="strokeWidth">
+          <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
+        </div>
       </div>
-    </div>
-    <div class="input-container">
-      <label>Stroke Width</label>
-      <div class="custom-number-input" bind-value-to="strokeWidth">
-        <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
+      <div class="input-container">
+        <label for="text-lines-bg-color">Stroke Color</label>
+        <div class="custom-number-input">
+          <input id="strokeColor" value="#000000" data-jscolor="{}" size="10" style="border-radius: 4px;">
+        </div>
       </div>
-    </div>
-    <div class="input-container">
-      <label for="text-lines-bg-color">Stroke Color</label>
-      <div class="custom-number-input">
-        <input id="strokeColor" value="#000000" data-jscolor="{}" size="10" style="border-radius: 4px;">
-      </div>
-    </div>
-    <div class="input-container">
-      <label for="text-lines-bg-color">Color</label>
-      <div class="custom-number-input">
-        <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
+      <div class="input-container">
+        <label for="text-lines-bg-color">Color</label>
+        <div class="custom-number-input">
+          <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div>
-</div>
+  <div>
+  </div>
 </body>
 <script src="js/jscolor.js"></script>
 <script src="js/jscolor.min.js"></script>

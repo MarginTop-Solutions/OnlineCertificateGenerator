@@ -161,8 +161,6 @@ function displayImageSize(img) {
     // Add your custom logic here
   });
 
-
-
   function updateTooltipPosition() {
     // const activeObject = canvas.activeObject;
     // console.log(activeObject)
@@ -287,6 +285,10 @@ function Osubstcanhie() {
   }
 }
 
+function clearbgImage() {
+  canvas.backgroundImage = null;
+  canvas.renderAll();
+}
 
 const clearCanvas = (_0x11adff, _0x2c1d60) => {
   _0x2c1d60.value = _0x11adff.toSVG();
@@ -1010,6 +1012,7 @@ function updateObjectProperty(object) {
 
 canvas.on("selection:cleared", function () {
   document.getElementById("shapespop").style.display = "none";
+  document.getElementById("delete1").style.opacity = 0.5;
 })
 
 canvas.on("selection:created", onObjectSelected);
@@ -1027,7 +1030,7 @@ function onObjectSelected() {
     document.getElementById("shapespop").style.display = "block";
     updateObjectProperty(canvas.getActiveObject());
   }
-};
+  };
 
 canvas.on('object:scaling', function (e) {
   updateObjectProperty(e.target);
@@ -1047,7 +1050,7 @@ function onObjectSelected() {
     document.getElementById("shapespop").style.display = "block";
     updateObjectProperty(canvas.getActiveObject());
   }
-
+  document.getElementById("delete1").style.opacity = 1;
   const activeObject = _0x33ff20;
   if (activeObject && activeObject.type === 'image') {
     // Display the size of the image while moving
