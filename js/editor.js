@@ -404,8 +404,8 @@ function handleFileSelect(event) {
       // Load JSON content into the canvas
       canvas.setWidth(jsonContent.width);
       canvas.setHeight(jsonContent.height);
-      document.getElementById("enterCanvasWidth").value = pxToCm(canvas.width);
-      document.getElementById("enterCanvasHeight").value = pxToCm(canvas.height);
+      document.getElementById("enterCanvasWidth").value = pxToCm(canvas.width).toFixed(2);
+      document.getElementById("enterCanvasHeight").value = pxToCm(canvas.height).toFixed(2);
       canvas.loadFromJSON(jsonContent.objects, function () {
         // Render the canvas after loading JSON
         canvas.renderAll();
