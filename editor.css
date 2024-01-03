@@ -1,4 +1,4 @@
-body{
+body {
   overflow: hidden;
 }
 
@@ -49,7 +49,7 @@ div.zoh0 {
   color: green;
 }
 
-.Footer a{
+.Footer a {
   text-decoration: none;
 }
 
@@ -346,7 +346,7 @@ span.file-name {
 
 .toolbar button.active,
 .toolbar button:hover {
-    background-color: #ff1;
+  background-color: #ff1;
   box-shadow: 5px 0 10px 0 #aa1;
 }
 
@@ -379,7 +379,7 @@ span.file-name {
 .toolpanel.visible {
   display: initial;
 }
-
+/* 
 div.shapepopup {
   display: block;
   padding: 1.5em 1em;
@@ -402,7 +402,7 @@ div.shapepopup {
 }
 
 .shapepopup .content {
-  /* padding: 20px;*/
+  /* padding: 20px;
   position: relative;
   height: -webkit-fill-available;
   height: -ms-fill-available;
@@ -446,7 +446,7 @@ div.shapepopup {
   border-radius: 6px;
   margin-top: 0;
   background-color: #0001;
-  /* width: fit-content; */
+  /* width: fit-content; 
 }
 
 .shapepopup .input-container label {
@@ -502,10 +502,10 @@ div.shapepopup {
 .shapepopup .input-container .custom-number-input input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
 
 
-div.zohpopup {
+.props-popup {
   display: none;
   padding: 1.5em 1em;
   width: 25vw;
@@ -526,7 +526,7 @@ div.zohpopup {
   position: absolute;
 }
 
-.zohpopup .content {
+/* .props-popup .content {
   padding: 20px;
   position: relative;
   height: -webkit-fill-available;
@@ -535,16 +535,7 @@ div.zohpopup {
   height: -moz-fill-available;
 }
 
-.zohpopup .title {
-  font-weight: 700;
-  margin: 0;
-  padding-bottom: 10px;
-  width: 100%;
-  border-bottom: 1px solid #448ba7;
-  text-transform: uppercase;
-}
-
-.zohpopup .content .hide-show-handler {
+.props-popup .content .hide-show-handler {
   position: absolute;
   top: calc(50% - 40px);
   right: -42px;
@@ -560,161 +551,36 @@ div.zohpopup {
   background-size: 10px;
   background-repeat: no-repeat;
   background-position: center center;
-}
+} */
 
-.zohpopup .input-container {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  padding: 0.5em;
-  margin: 2em;
-  border-radius: 6px;
-  background-color: #0001;
-}
-
-.zohpopup .input-container label {
-  width: 60%;
-  text-align: left;
-  margin-left: 10px;
-}
-
-.zohpopup .input-container select {
-  width: 50%;
-  height: 29px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-.zohpopup .input-container .sp-replacer {
-  width: 50%;
-}
-
-.zohpopup .input-container .custom-number-input {
-  display: flex;
-  align-items: center;
-  padding: 1px;
-  height: 30px;
-  background-color: #fff6;
-  border-radius: 6px;
-  text-align: center;
-}
-
-.zohpopup .input-container .custom-number-input button {
-  width: 36px !important;
-  height: 30px !important;
-  background-color: #760505;
-  background-clip: padding-box;
-  border-radius: 6px;
-  color: #ffffff;
-  border: 1px solid transparent;
-  cursor: pointer;
-  outline: none;
-}
-
-.zohpopup .input-container .custom-number-input input {
-  height: 30px !important;
-  width: 60px !important;
-  background: transparent !important;
-  border: none;
-  outline: none;
-  text-align: center;
-}
-
-.zohpopup .input-container .custom-number-input input::-webkit-outer-spin-button,
-.zohpopup .input-container .custom-number-input input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-div.canpropopup {
-  display: none;
-  padding: 1.5em 1em;
-  width: auto;
-  height: auto;
-  max-width: 25vw;
-  margin: 10px;
-  text-align: center;
-  left: 10px;
-  border: 1px solid #e1e1e1;
-  background-color: #fff;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  top: 77px;
-  border: 1px solid #ddd;
-  transition: all .4s;
-  box-sizing: border-box;
-  font-size: 1.2em;
-  color: #795100;
-  position: absolute;
-}
-
-.canpropopup .content {
-  padding: 20px;
-  position: relative;
-  height: -webkit-fill-available;
-  height: -ms-fill-available;
-  height: fill-available;
-  height: -moz-fill-available;
-}
-
-.canpropopup .title {
-  font-weight: 700;
-  margin: 0;
-  padding-bottom: 10px;
-  width: 100%;
-  border-bottom: 1px solid #448ba7;
-  text-transform: uppercase;
-}
-
-.canpropopup .content .hide-show-handler {
-  position: absolute;
-  top: calc(50% - 40px);
-  right: -42px;
-  width: 40px;
-  height: 80px;
-  background-color: #d22525;
-  border: 1px solid #ddd;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  cursor: pointer;
-
-  background-image: url('/lib/caret-left.svg');
-  background-size: 10px;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.canpropopup .input-container {
+.props-popup .input-container {
   display: flex;
   justify-content: space-between;
-  gap: 4px;
-  align-items: center;
-  padding: 0.1em;
-  margin-top: 1em;
+  padding: 0.8em;
+  margin: 2rem;
   border-radius: 6px;
   background-color: #0001;
-  /* width: fit-content; */
 }
 
-.canpropopup .input-container label {
-  width: 60%;
+.props-popup .input-container label {
   text-align: left;
-  margin-left: 10px;
+  align-self: center;
 }
 
-.canpropopup .input-container select {
+.props-popup .input-container select {
   width: 50%;
-  height: 29px;
-  border: 1px solid #b14141;
+  height: 2rem;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  outline: none;
+  font-size: 1rem;
 }
 
-.canpropopup .input-container .sp-replacer {
+.props-popup .input-container .sp-replacer {
   width: 50%;
 }
 
-.canpropopup .input-container .custom-number-input {
+.props-popup .input-container .custom-number-input {
   display: flex;
   align-items: center;
   padding: 1px;
@@ -724,7 +590,7 @@ div.canpropopup {
   text-align: center;
 }
 
-.canpropopup .input-container .custom-number-input button {
+.props-popup .input-container .custom-number-input button {
   width: 36px !important;
   height: 30px !important;
   background-color: #760505;
@@ -736,7 +602,7 @@ div.canpropopup {
   outline: none;
 }
 
-.canpropopup .input-container .custom-number-input input {
+.props-popup .input-container .custom-number-input input {
   height: 30px !important;
   width: 60px !important;
   background: transparent !important;
@@ -745,8 +611,8 @@ div.canpropopup {
   text-align: center;
 }
 
-.canpropopup .input-container .custom-number-input input::-webkit-outer-spin-button,
-.canpropopup .input-container .custom-number-input input::-webkit-inner-spin-button {
+.props-popup .input-container .custom-number-input input::-webkit-outer-spin-button,
+.props-popup .input-container .custom-number-input input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -786,3 +652,128 @@ div.canpropopup {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+/* 
+  div.canpropopup {
+    display: none;
+    padding: 1.5em 1em;
+    width: auto;
+    height: auto;
+    max-width: 25vw;
+    margin: 10px;
+    text-align: center;
+    left: 10px;
+    border: 1px solid #e1e1e1;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    top: 77px;
+    border: 1px solid #ddd;
+    transition: all .4s;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    color: #795100;
+    position: absolute;
+  }
+  
+  .canpropopup .content {
+    padding: 20px;
+    position: relative;
+    height: -webkit-fill-available;
+    height: -ms-fill-available;
+    height: fill-available;
+    height: -moz-fill-available;
+  }
+  
+  .canpropopup .title {
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid #448ba7;
+    text-transform: uppercase;
+  }
+  
+  .canpropopup .content .hide-show-handler {
+    position: absolute;
+    top: calc(50% - 40px);
+    right: -42px;
+    width: 40px;
+    height: 80px;
+    background-color: #d22525;
+    border: 1px solid #ddd;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
+  
+    background-image: url('/lib/caret-left.svg');
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .canpropopup .input-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    align-items: center;
+    padding: 0.1em;
+    margin-top: 1em;
+    border-radius: 6px;
+    background-color: #0001;
+    /* width: fit-content; 
+  }
+  
+  .canpropopup .input-container label {
+    width: 60%;
+    text-align: left;
+    margin-left: 10px;
+  }
+  
+  .canpropopup .input-container select {
+    width: 50%;
+    height: 29px;
+    border: 1px solid #b14141;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .canpropopup .input-container .sp-replacer {
+    width: 50%;
+  }
+  
+  .canpropopup .input-container .custom-number-input {
+    display: flex;
+    align-items: center;
+    padding: 1px;
+    height: 30px;
+    background-color: #fff6;
+    border-radius: 6px;
+    text-align: center;
+  }
+  
+  .canpropopup .input-container .custom-number-input button {
+    width: 36px !important;
+    height: 30px !important;
+    background-color: #760505;
+    background-clip: padding-box;
+    border-radius: 6px;
+    color: #ffffff;
+    border: 1px solid transparent;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .canpropopup .input-container .custom-number-input input {
+    height: 30px !important;
+    width: 60px !important;
+    background: transparent !important;
+    border: none;
+    outline: none;
+    text-align: center;
+  }
+  
+  .canpropopup .input-container .custom-number-input input::-webkit-outer-spin-button,
+  .canpropopup .input-container .custom-number-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  } */

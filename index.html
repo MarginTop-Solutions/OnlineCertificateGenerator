@@ -177,7 +177,7 @@
     <a href="https://margintopsolutions.com.np/">MarginTop Solutions</a>
   </div>
 
-  <div id="mydiv" class="zohpopup">
+  <div id="mydiv" class="props-popup">
     <button class="increase" onclick="closediv()" style="float: right;margin-top: 10px;">X</button>
     <h1>Text Properties</h1>
     <hr>
@@ -284,7 +284,7 @@
     </div>
   </div>
 
-  <div class="canpropopup" id="myform">
+  <div class="props-popup" id="myform">
     <button onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
     <h3>Canvas Properties</h3>
     <hr>
@@ -332,7 +332,7 @@
     <hr>
   </div>
 
-  <div id="shapespop" class="shapepopup">
+  <div id="shapespop" class="props-popup">
     <button class="increase" onclick="closeshapespop()" style="float: right">X</button>
     <h1>Objects</h1>
     <hr>
@@ -366,19 +366,20 @@
       </button>
     </div>
     <hr>
-    <h3 style="margin-top: 1em; margin-bottom: 1em;">Objects Settings</h3>
-    <div style="overflow-y: hidden; display: flex; flex-direction: column; justify-content: space-around; gap: 2em;">
+    <h3 style="margin:1em 0;">Objects Settings</h3>
+    
+    <div>
+
       <div class="input-container">
-        <label>Object Width(cm)</label>
+        <label>Object Width (cm)</label>
         <div class="custom-number-input">
           <button class="decrease" onclick="Osubstcan()">-</button>
           <input min="1" placeholder="6" value="6" onchange="OcanWit(this.value)" id="objectWidth">
           <button class="increase" onclick="Oadditioncan()">+</button>
         </div>
       </div>
-
       <div class="input-container">
-        <label>Object Height(cm)</label>
+        <label>Object Height (cm)</label>
         <div class="custom-number-input">
           <button class="decrease" onclick="Osubstcanhie()">-</button>
           <input min="1" placeholder="6" value="6" onchange="Ocanhie(this.value)" id="objectHeight">
@@ -394,7 +395,7 @@
       <div class="input-container">
         <label for="text-lines-bg-color">Stroke Color</label>
         <div class="custom-number-input">
-          <input id="strokeColor" value="#000000" data-jscolor="{}" size="10" style="border-radius: 4px;">
+          <input id="strokeColor" value="#000000" data-jscolor="{}" size="10">
         </div>
       </div>
       <div class="input-container">
@@ -403,6 +404,7 @@
           <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
         </div>
       </div>
+
     </div>
   </div>
   <div>

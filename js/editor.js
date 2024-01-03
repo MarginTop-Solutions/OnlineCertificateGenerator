@@ -530,12 +530,13 @@ $(".add_shape").click(function () {
 
   function getPolyPoints(n, r) {
     const del = 2 * Math.PI / n;
-    var an = del - Math.PI / 2;
+    let an = -Math.PI / 2;
     let coords = [];
     for (let i = 0; i < n; i++) {
-      coords.push({ 'x': r * Math.cos(an), 'y': r * Math.sin(an) });
       an += del;
+      coords.push({ 'x': r * Math.cos(an), 'y': r * Math.sin(an) });
     }
+    console.log(coords);
     return coords;
   }
 
@@ -675,20 +676,23 @@ $(".add_shape").click(function () {
         }
         break;
       case "pentagon":
-        var _0xbc7fa1 = new fabric.Polyline(getPolyPoints(5, props.width / 2), {
+        var _0x5003bc = new fabric.Polygon(getPolyPoints(5, props.width / 2), {
+          'top': 0xb4,
+          'left': 0xc8,
+          'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
-          'fill': props.color,
+          'width': props.width,
+          'height': props.height,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
-          'originX': 'center',
+          'originX': "center",
           'originY': 'center',
-          'statefullCache': "false",
           'strokeUniform': true
         });
-        canvas.add(_0xbc7fa1);
-        canvas.centerObject(_0xbc7fa1);
-        canvas.setActiveObject(_0xbc7fa1);
+        canvas.add(_0x5003bc);
+        canvas.centerObject(_0x5003bc);
+        canvas.setActiveObject(_0x5003bc);
         canvas.requestRenderAll();
         break;
       case "diamond":
@@ -1030,7 +1034,7 @@ function onObjectSelected() {
     document.getElementById("shapespop").style.display = "block";
     updateObjectProperty(canvas.getActiveObject());
   }
-  };
+};
 
 canvas.on('object:scaling', function (e) {
   updateObjectProperty(e.target);
