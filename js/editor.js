@@ -369,7 +369,13 @@ var jsonSaver = document.getElementById('JSONDownload'); // Assuming you have an
 jsonSaver.addEventListener("click", saveJSON, false);
 
 function saveJSON(_0x2895f4) {
-  var jsonData = JSON.stringify(canvas);
+  let canvData = {
+    objects: canvas,
+    width: canvas.width,
+    height: canvas.height
+  }
+  var jsonData = JSON.stringify(canvData);
+  console.log(jsonData);
 
   // Create a blob from the JSON data
   var blob = new Blob([jsonData], { type: 'application/json' });
@@ -393,10 +399,14 @@ function handleFileSelect(event) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      var jsonContent = e.target.result;
+      var jsonContent = JSON.parse(e.target.result);
 
       // Load JSON content into the canvas
-      canvas.loadFromJSON(jsonContent, function () {
+      canvas.setWidth(jsonContent.width);
+      canvas.setHeight(jsonContent.height);
+      document.getElementById("enterCanvasWidth").value = pxToCm(canvas.width);
+      document.getElementById("enterCanvasHeight").value = pxToCm(canvas.height);
+      canvas.loadFromJSON(jsonContent.objects, function () {
         // Render the canvas after loading JSON
         canvas.renderAll();
       });
