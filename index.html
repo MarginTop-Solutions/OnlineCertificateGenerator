@@ -51,61 +51,63 @@
       <button id="text1" onclick="addtext(canvas)">
         <img src="Icons/fonts.svg" alt="Bootstrap" width="32" height="32">
       </button>
-    </div> -->
+      </div> -->
       <div class="tooltip">
         <span class="tooltiptext">Add Textarea</span>
         <button id="textarea1" onclick="addtextarea(canvas)">
-          <img src="Icons/textarea-t.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/textarea-t.svg" alt="Bootstrap" >
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Add Objects</span>
 
         <button id="shapes1" onclick="openshapespop()">
-          <img src="Icons/bounding-box-circles.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/bounding-box-circles.svg" alt="Bootstrap" >
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Group</span>
         <button id="group1" onclick="groupObjects()">
-          <img src="Icons/group-43.svg" alt="Bootstrap" width="39" height="39">
+          <img src="Icons/group-43.svg" alt="Bootstrap">
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Ungroup</span>
         <button id="ungroup1" onclick="ungroupObjects()">
-          <img src="Icons/ungroup.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/ungroup.svg" alt="Bootstrap">
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Bring to Front</span>
         <button id="front1" onclick="sendSelectedObjectforward()">
-          <img src="Icons/front.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/front.svg" alt="Bootstrap">
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Sent Back</span>
         <button id="back1" onclick="sendSelectedObjectBack()">
-          <img src="Icons/back.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/back.svg" alt="Bootstrap" >
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Delete</span>
-        <button id="delete1" onclick="deleteSelectedObjectsFromCanvas()">
-          <img src="Icons/trash.svg" alt="Bootstrap" width="32" height="32">
+        <button id="delete1" onclick="deleteSelectedObjectsFromCanvas()" style="opacity: 0.5;">
+          <img src="Icons/trash.svg" alt="Bootstrap" >
         </button>
       </div>
     </div>
+
     <div class="logo">
-      <img src="https://m.verifyd.org/file/engines/1/verifyd-icon.svg" height="62" width="62" alt="">
+      <img src="https://m.verifyd.org/file/engines/1/verifyd-icon.svg" alt="" style="height: 4vh; padding: 0.5rem;">
     </div>
+    
     <div class="extended-buttons">
       <div class="tooltip">
         <span class="tooltiptext">Upload JSON</span>
         <a id="JSONUpload" href="#">
           <button id="uploadJSON">
             <div class="upload-btn-wrapper">
-              <img src="Icons/easel3.svg" alt="Upload" width="32" height="32">
+              <img src="Icons/easel3.svg" alt="Upload">
               <input id="jsonFileInput" type="file" accept=".json">
             </div>
           </button>
@@ -115,7 +117,7 @@
         <span class="tooltiptext">Export JSON</span>
         <a id="JSONDownload" href="#">
           <button id="saveJSON">
-            <img src="Icons/eject.svg" alt="Bootstrap" width="32" height="32">
+            <img src="Icons/eject.svg" alt="Bootstrap">
           </button>
         </a>
       </div>
@@ -123,7 +125,7 @@
         <span class="tooltiptext">Upload Image</span>
         <button id="upload1">
           <div class="upload-btn-wrapper">
-            <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+            <img src="Icons/upload.svg" alt="Bootstrap" >
             <Input id="myImg" type="file" accept="Image/">
           </div>
         </button>
@@ -132,14 +134,14 @@
         <span class="tooltiptext">Save</span>
         <a id="lnkDownload" href="#">
           <button id="save1">
-            <img src="Icons/download.svg" alt="Bootstrap" width="32" height="32">
+            <img src="Icons/download.svg" alt="Bootstrap">
           </button>
         </a>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Settings</span>
         <button id="setting1" onclick="openForm()">
-          <img src="Icons/gear.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/gear.svg" alt="Bootstrap">
         </button>
       </div>
       <!-- <div class="tooltip">
@@ -151,9 +153,17 @@
       <div class="tooltip">
         <span class="tooltiptext">Clear Canvas</span>
         <button id="clear1" onclick="clearCanvas(canvas, svgState)">
-          <img src="Icons/x-lg.svg" alt="Bootstrap" width="32" height="32">
+          <img src="Icons/x-lg.svg" alt="Bootstrap">
         </button>
       </div>
+
+      <div class="tooltip">
+        <span class="tooltiptext">Clear Background</span>
+        <button onclick="clearbgImage()">
+          <img src="Icons/bag-x.svg" alt="Bootstrap">
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -173,7 +183,7 @@
   </div> -->
   </div>
   <div class="Footer">
-    Developed with love &#9829 by
+    <p>Developed with love &#9829 by &nbsp;</p>
     <a href="https://margintopsolutions.com.np/">MarginTop Solutions</a>
   </div>
 
@@ -320,13 +330,6 @@
           <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
           <Input id="file2" type="file" accept="Image/">
         </div>
-      </button>
-    </div>
-
-    <div style="margin-top: 1rem;">
-      <button onclick="clearbgImage()"
-        style="background: #760505; padding: 10px; color: white; font-size: 1.2rem; border-radius: 14px;">
-        Clear BG Image
       </button>
     </div>
     <hr>
