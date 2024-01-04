@@ -425,8 +425,8 @@ var jsonFileInput = document.getElementById('jsonFileInput');
 jsonFileInput.addEventListener('change', handleFileSelect, false);
 
 const canvas = new fabric.Canvas('zbcanvas', {
-  'width': 660,
-  'height': 520,
+  'width': cmToPx(30),
+  'height': cmToPx(24),
   'borderColor': 'black',
   'border': 0x3,
   'backgroundColor': "white",

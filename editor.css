@@ -382,8 +382,8 @@ span.file-name {
 .props-popup {
   display: none;
   padding: 1.5em 1em;
-  width: 25vw;
-  margin: 10px;
+  width: 24vw;
+  margin: 2.8rem 0.5rem;
   text-align: center;
   left: 10px;
   height: 82vh;
