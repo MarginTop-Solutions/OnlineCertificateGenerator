@@ -24,17 +24,6 @@ body {
   border: 1px solid green;
 }
 
-div.zoh0 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-left: 25vw;
-  height: 84vh;
-  border: 4px solid rgb(255, 245, 228);
-  background-color: #956b00;
-}
 
 .Footer {
   font-size: 1.2rem;
@@ -52,19 +41,38 @@ div.zoh0 {
   color: #f74;
 }
 
-div.shape {
-  line-height: 3.2;
+div.zoh0 {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: row;
   margin-top: 10px;
-  overflow: scroll;
-  overflow-x: hidden;
-  height: 200px;
+  height: 84vh;
+  border: 4px solid rgb(255, 245, 228);
+  background-color: #bbb;
 }
 
-.shape button {
+.canvas {
+  width:100%;
+  height: 100%;
+  background-color: #9f8031;
+}
+
+.canvas div {
+    margin: auto;
+    height: 100%;
+}
+
+.canvas canvas {
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+div.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+}
+
+.sidebar button {
   width: 64px;
   border-radius: 10px;
   height: 54px;
@@ -72,20 +80,19 @@ div.shape {
   clear: both;
   margin: 5px;
   border: 0;
-  border-radius: unset;
   outline: none;
 }
 
-.shape button.active,
-.shape button:hover {
+.sidebar button.active,
+.sidebar button:hover {
   opacity: 1;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   box-shadow: inset 5px 0 10px 0 rgba(50, 50, 50, .1);
 }
 
-.shape button img,
-.shape button svg {
+.sidebar button img,
+.sidebar button svg {
   width: 30px;
   height: 30px;
 }
@@ -121,42 +128,6 @@ div.zohinpop {
   height: 50px;
   margin-top: -10px;
   margin-left: -10px;
-}
-
-.butn {
-  border: 3px solid red;
-  color: white;
-  background-color: red;
-  padding: 11px 19px;
-  font-size: 15px;
-  margin-left: 20px;
-  margin-top: 14px;
-}
-
-.zoh-butn-wrapper input[type=file] {
-  font-size: 100px;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  width: 120px;
-  height: 45px;
-  margin-top: -46px;
-  margin-left: 20px;
-}
-
-.sidebar {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 10px;
-  background-color: #f2f2f2;
-  padding: 10px;
-  text-align: center;
-  overflow: scroll;
-  height: 300px;
-  width: 210px;
-  margin-left: 23px;
-  border: 1px solid #e1e1e1;
-  overflow-x: hidden;
 }
 
 .item1 {
@@ -383,7 +354,8 @@ span.file-name {
   display: none;
   padding: 1.5em 1em;
   width: 24vw;
-  margin: 2.8rem 0.5rem;
+  margin: 2.8rem 0.5rem ;
+  margin-right: 2rem;
   text-align: center;
   left: 10px;
   height: 82vh;
@@ -391,7 +363,6 @@ span.file-name {
   border: 1px solid #e1e1e1;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  top: 77px;
   border: 1px solid #ddd;
   transition: all .4s;
   box-sizing: border-box;

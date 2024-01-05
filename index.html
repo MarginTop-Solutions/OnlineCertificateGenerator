@@ -52,17 +52,12 @@
         <img src="Icons/fonts.svg" alt="Bootstrap" width="32" height="32">
       </button>
       </div> -->
-      <div class="tooltip">
-        <span class="tooltiptext">Add Textarea</span>
-        <button id="textarea1" onclick="addtextarea(canvas)">
-          <img src="Icons/textarea-t.svg" alt="Bootstrap" >
-        </button>
-      </div>
+
       <div class="tooltip">
         <span class="tooltiptext">Add Objects</span>
 
         <button id="shapes1" onclick="openshapespop()">
-          <img src="Icons/bounding-box-circles.svg" alt="Bootstrap" >
+          <img src="Icons/bounding-box-circles.svg" alt="Bootstrap">
         </button>
       </div>
       <div class="tooltip">
@@ -86,13 +81,13 @@
       <div class="tooltip">
         <span class="tooltiptext">Sent Back</span>
         <button id="back1" onclick="sendSelectedObjectBack()">
-          <img src="Icons/back.svg" alt="Bootstrap" >
+          <img src="Icons/back.svg" alt="Bootstrap">
         </button>
       </div>
       <div class="tooltip">
         <span class="tooltiptext">Delete</span>
         <button id="delete1" onclick="deleteSelectedObjectsFromCanvas()" style="opacity: 0.5;">
-          <img src="Icons/trash.svg" alt="Bootstrap" >
+          <img src="Icons/trash.svg" alt="Bootstrap">
         </button>
       </div>
     </div>
@@ -100,7 +95,7 @@
     <div class="logo">
       <img src="https://m.verifyd.org/file/engines/1/verifyd-icon.svg" alt="" style="height: 4vh; padding: 0.5rem;">
     </div>
-    
+
     <div class="extended-buttons">
       <div class="tooltip">
         <span class="tooltiptext">Upload JSON</span>
@@ -125,7 +120,7 @@
         <span class="tooltiptext">Upload Image</span>
         <button id="upload1">
           <div class="upload-btn-wrapper">
-            <img src="Icons/upload.svg" alt="Bootstrap" >
+            <img src="Icons/upload.svg" alt="Bootstrap">
             <Input id="myImg" type="file" accept="Image/">
           </div>
         </button>
@@ -167,11 +162,48 @@
     </div>
   </div>
 
-  <div class="zoh0" style="margin-top: 10px;">
-    <div class="zoh2" id="userInputWindow" style="margin: auto;">
-      <canvas id="zbcanvas" style="box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);"></canvas>
+  <div class="zoh0">
+    <div class="sidebar">
+      <button class="add_shape" id="circle" data-rel="circle">
+        <img src="Icons/circle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="rectangle" data-rel="rectangle">
+        <img src="Icons/square.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="text1" data-rel="ellipse">
+        <img src="Icons/ellipse.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="triangle" data-rel="triangle">
+        <img src="Icons/triangle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="hexagon" data-rel="hexagon">
+        <img src="Icons/hexagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="star" data-rel="star">
+        <img src="Icons/star.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="pentagon" data-rel="pentagon">
+        <img src="Icons/pentagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="diamond" data-rel="diamond">
+        <img src="Icons/diamond.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button class="add_shape" id="line" data-rel="line">
+        <img src="Icons/line.svg" draggable="false" alt="Bootstrap" width="32" height="32">
+      </button>
+      <button id="textarea1" onclick="addtextarea(canvas)">
+        <img src="Icons/textarea-t.svg" alt="Bootstrap">
+      </button>
     </div>
-    <!--<div class="zoh3">
+
+    <div class="canvas" id="userInputWindow">
+      <div>
+        <canvas id="zbcanvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="zoh3">
      <div>
 <h5 style="margin-block-start: 0.5em; margin-block-end: 0.5em; font-size: 36px;">Images</h5>
 <div class="sidebar">
@@ -181,7 +213,6 @@
 <iframe id="ifm" style="height: 100px; width:270px; border: none;" title="Iframe Example"></iframe>
 </div>
   </div> -->
-  </div>
   <div class="Footer">
     <p>Developed with love &#9829 by &nbsp;</p>
     <a href="https://margintopsolutions.com.np/">MarginTop Solutions</a>
@@ -339,38 +370,8 @@
     <button class="increase" onclick="closeshapespop()" style="float: right">X</button>
     <h1>Objects</h1>
     <hr>
-    <div class="shape">
-      <button class="add_shape" id="circle" data-rel="circle">
-        <img src="Icons/circle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="rectangle" data-rel="rectangle">
-        <img src="Icons/square.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="text1" data-rel="ellipse">
-        <img src="Icons/ellipse.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="triangle" data-rel="triangle">
-        <img src="Icons/triangle.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="hexagon" data-rel="hexagon">
-        <img src="Icons/hexagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="star" data-rel="star">
-        <img src="Icons/star.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="pentagon" data-rel="pentagon">
-        <img src="Icons/pentagon.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="diamond" data-rel="diamond">
-        <img src="Icons/diamond.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-      <button class="add_shape" id="line" data-rel="line">
-        <img src="Icons/line.svg" draggable="false" alt="Bootstrap" width="32" height="32">
-      </button>
-    </div>
-    <hr>
     <h3 style="margin:1em 0;">Objects Settings</h3>
-    
+
     <div>
 
       <div class="input-container">

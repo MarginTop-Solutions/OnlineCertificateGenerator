@@ -316,6 +316,8 @@ function deleteSelectedObjectsFromCanvas() {
   } else {
     canvas.remove(_0x4e29f9);
   }
+  document.getElementById("mydiv").style.display = "none";
+  document.getElementById("shapespop").style.display = "none";
   canvas.discardActiveObject();
   canvas.requestRenderAll();
 }
