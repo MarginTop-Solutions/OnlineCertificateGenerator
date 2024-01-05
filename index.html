@@ -54,13 +54,6 @@
       </div> -->
 
       <div class="tooltip">
-        <span class="tooltiptext">Add Objects</span>
-
-        <button id="shapes1" onclick="openshapespop()">
-          <img src="Icons/bounding-box-circles.svg" alt="Bootstrap">
-        </button>
-      </div>
-      <div class="tooltip">
         <span class="tooltiptext">Group</span>
         <button id="group1" onclick="groupObjects()">
           <img src="Icons/group-43.svg" alt="Bootstrap">
@@ -79,7 +72,7 @@
         </button>
       </div>
       <div class="tooltip">
-        <span class="tooltiptext">Sent Back</span>
+        <span class="tooltiptext">Send Back</span>
         <button id="back1" onclick="sendSelectedObjectBack()">
           <img src="Icons/back.svg" alt="Bootstrap">
         </button>
@@ -196,223 +189,155 @@
       </button>
     </div>
 
-    <div class="canvas" id="userInputWindow">
+    <div class="masterarea" id="userInputWindow">
+      <div style="background-color: #fff;">
+        <div class="props-topbar" id="props-topbar">
+          <button id="text-cmd-bold" style="font-weight: bold;"
+            onclick="toggleTextProp('fontWeight', 'bold', this)">B</button>
+          <button id="text-cmd-italic" style="font-style: italic;"
+            onclick="toggleTextProp('fontStyle', 'italic', this)">I</button>
+          <button id="text-cmd-underline" style="text-decoration: underline;"
+            onclick="toggleTextProp('underline', true, this)">U</button>
+          <button id="text-cmd-linethrough" style="text-decoration: line-through;"
+            onclick="toggleTextProp('linethrough', true, this)">Aa</button>
+          <button id="text-cmd-overline" style="text-decoration: overline;"
+            onclick="toggleTextProp('overline', true, this)">Aa</button>
+
+          <select id="font-family">
+            <option value="system-ui" selected>same as system</option>
+            <option value="arial">Arial</option>
+            <option value="helvetica">Helvetica</option>
+            <option value="myriad pro">Myriad Pro</option>
+            <option value="delicious">Delicious</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="verdana">Verdana</option>
+            <option value="georgia">Georgia</option>
+            <option value="courier">Courier</option>
+            <option value="comic sans ms">Comic Sans MS</option>
+            <option value="impact">Impact</option>
+            <option value="cursive">Cursive</option>
+            <option value="serif">Serif</option>
+            <option value="sans-serif">Sans-serif</option>
+            <option value="math">Math</option>
+            <option value="fantasy">fantasy</option>
+            <option value="monospace">monospace</option>
+            <option value="emoji">emoji</option>
+            <option value="sofia">Sofia</option>
+          </select>
+
+          <select id="text-align">
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="justify">Justify</option>
+          </select>
+
+          <div class="custom-number-input">
+            <button class="decrease" onclick="txtwidminus(this.val)">-</button>
+            <input min="1" value="18" id="text-font-size" style="padding: 0.3rem; width: 4rem; text-align: center;">
+            <button class="increase" onclick="txtwidplus(this.val)">+</button>
+          </div>
+
+          <input id="text-lines-bg-color" value="#ffffff" data-jscolor="{}" id="text-color" size="10">
+
+        </div>
+      </div>
+
+      <div class="canvdiv">
+        <canvas id="zbcanvas" style="border: 1px solid black; margin:2rem;"></canvas>
+      </div>
+
+    </div>
+
+    <div id="shapespop" class="props-popup">
+      <h3 style="margin:1em 0;">Objects Settings</h3>
       <div>
-        <canvas id="zbcanvas"></canvas>
+        <div class="input-container">
+          <label>Object Width (cm)</label>
+          <div class="custom-number-input">
+            <button class="decrease" onclick="Osubstcan()">-</button>
+            <input min="1" placeholder="6" value="6" onchange="OcanWit(this.value)" id="objectWidth">
+            <button class="increase" onclick="Oadditioncan()">+</button>
+          </div>
+        </div>
+        <div class="input-container">
+          <label>Object Height (cm)</label>
+          <div class="custom-number-input">
+            <button class="decrease" onclick="Osubstcanhie()">-</button>
+            <input min="1" placeholder="6" value="6" onchange="Ocanhie(this.value)" id="objectHeight">
+            <button class="increase" onclick="Oadditioncanhie()">+</button>
+          </div>
+        </div>
+        <div class="input-container">
+          <label>Stroke Width</label>
+          <div class="custom-number-input" bind-value-to="strokeWidth">
+            <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
+          </div>
+        </div>
+        <div class="input-container">
+          <label for="text-lines-bg-color">Stroke Color</label>
+          <div class="custom-number-input">
+            <input id="strokeColor" value="#000000" data-jscolor="{}" size="10">
+          </div>
+        </div>
+        <div class="input-container">
+          <label for="text-lines-bg-color">Color</label>
+          <div class="custom-number-input">
+            <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
+          </div>
+        </div>
+
       </div>
     </div>
+
+    <div class="props-popup" id="myform" style="display: none;">
+      <button onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
+      <h3>Canvas Properties</h3>
+      <hr>
+      <div class="input-container">
+        <label>Canvas Width(cm)</label>
+        <div class="custom-number-input">
+          <button onclick="substcan()">-</button>
+          <input min="1" placeholder="30" value="30" onchange="updtcanw(this.value)" id="enterCanvasWidth">
+          <button onclick="additioncan()">+</button>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label>Canvas Height(cm)</label>
+        <div class="custom-number-input">
+          <button onclick="substcanhie()">-</button>
+          <input min="1" placeholder="24" value="24" onchange="updtcanh(this.value)" id="enterCanvasHeight">
+          <button onclick="additioncanhie()">+</button>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label>Background Color</label>
+        <div class="custom-number-input">
+          <input id="colorPicker2" value="" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label>Background Image</label>
+        <button id="upload1">
+          <div class="upload-btn-wrapper">
+            <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+            <Input id="file2" type="file" accept="Image/">
+          </div>
+        </button>
+      </div>
+      <hr>
+    </div>
+
   </div>
 
-  <!--<div class="zoh3">
-     <div>
-<h5 style="margin-block-start: 0.5em; margin-block-end: 0.5em; font-size: 36px;">Images</h5>
-<div class="sidebar">
-<div id="fooBar" class="item1">
-</div>
-</div>
-<iframe id="ifm" style="height: 100px; width:270px; border: none;" title="Iframe Example"></iframe>
-</div>
-  </div> -->
   <div class="Footer">
     <p>Developed with love &#9829 by &nbsp;</p>
     <a href="https://margintopsolutions.com.np/">MarginTop Solutions</a>
   </div>
 
-  <div id="mydiv" class="props-popup">
-    <button class="increase" onclick="closediv()" style="float: right;margin-top: 10px;">X</button>
-    <h1>Text Properties</h1>
-    <hr>
-
-    <div id="text-controls-additional" class="zohinpop">
-      <div class="input-container">
-        <label for="text-lines-bg-color">Text Color</label>
-        <div class="custom-number-input">
-          <input id="colorPicker" value="#000000" data-jscolor="{}" id="text-color" size="10"
-            style="border-radius: 4px;">
-        </div>
-      </div>
-      <div class="input-container">
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
-          <div>
-            <input type='checkbox' name='fonttype' id="text-cmd-bold">Bold</input>
-          </div>
-          <div>
-            <input type='checkbox' name='fonttype' id="text-cmd-italic">Italic</input>
-          </div>
-          <div>
-            <input type='checkbox' name='fonttype' id="text-cmd-underline">Underline</input>
-          </div>
-          <div>
-            <input type='checkbox' name='fonttype' id="text-cmd-linethrough">Linethrough</input>
-          </div>
-          <div>
-            <input type='checkbox' name='fonttype' id="text-cmd-overline">Overline</input>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="input-container">
-        <label for="font-family" style="display:inline-block">Font family:</label>
-        <select id="font-family">
-          <option value="system-ui" selected>same as system</option>
-          <option value="arial">Arial</option>
-          <option value="helvetica">Helvetica</option>
-          <option value="myriad pro">Myriad Pro</option>
-          <option value="delicious">Delicious</option>
-          <option value="verdana">Verdana</option>
-          <option value="georgia">Georgia</option>
-          <option value="courier">Courier</option>
-          <option value="comic sans ms">Comic Sans MS</option>
-          <option value="impact">Impact</option>
-          <option value="cursive">Cursive</option>
-          <option value="serif">Serif</option>
-          <option value="sans-serif">Sans-serif</option>
-          <option value="math">Math</option>
-          <option value="fantasy">fantasy</option>
-          <option value="monospace">monospace</option>
-          <option value="emoji">emoji</option>
-          <option value="sofia">Sofia</option>
-        </select>
-      </div>
-
-      <div class="input-container">
-        <label for="text-align" style="display:inline-block">Text align:</label>
-        <select id="text-align">
-          <option value="left">Left</option>
-          <option value="center">Center</option>
-          <option value="right">Right</option>
-          <option value="justify">Justify</option>
-        </select>
-      </div>
-
-
-      <div class="input-container">
-        <label>Font Size</label>
-        <div class="custom-number-input">
-          <button class="decrease" onclick="txtwidminus(this.val)">-</button>
-          <input min="1" value="16" id="text-font-size">
-          <button class="increase" onclick="txtwidplus(this.val)">+</button>
-        </div>
-      </div>
-
-
-      <div class="input-container">
-        <label for="text-lines-bg-color">Back Color</label>
-        <div class="custom-number-input">
-          <input id="text-lines-bg-color" value="#ffffff" data-jscolor="{}" id="text-color" size="10"
-            style="border-radius: 4px;">
-        </div>
-      </div>
-
-      <div class="input-container">
-        <label for="text-lines-bg-color">Stroke Color</label>
-        <div class="custom-number-input">
-          <input id="text-stroke-color" value="#000000" data-jscolor="{}" id="text-color" size="10"
-            style="border-radius: 4px;">
-        </div>
-      </div>
-
-      <div class="input-container">
-        <label>Stroke Width</label>
-        <div class="custom-number-input">
-          <button class="decrease" onclick="txtstrokeminus(this.val)">-</button>
-          <input min="1" value="1" id="text-stroke-width">
-          <button class="increase" onclick="txtstrokeplus(this.val)">+</button>
-        </div>
-      </div>
-      <hr>
-    </div>
-  </div>
-
-  <div class="props-popup" id="myform">
-    <button onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
-    <h3>Canvas Properties</h3>
-    <hr>
-    <div class="input-container">
-      <label>Canvas Width(cm)</label>
-      <div class="custom-number-input">
-        <button onclick="substcan()">-</button>
-        <input min="1" placeholder="30" value="30" onchange="updtcanw(this.value)" id="enterCanvasWidth">
-        <button onclick="additioncan()">+</button>
-      </div>
-    </div>
-
-    <div class="input-container">
-      <label>Canvas Height(cm)</label>
-      <div class="custom-number-input">
-        <button onclick="substcanhie()">-</button>
-        <input min="1" placeholder="24" value="24" onchange="updtcanh(this.value)" id="enterCanvasHeight">
-        <button onclick="additioncanhie()">+</button>
-      </div>
-    </div>
-
-    <div class="input-container">
-      <label>Background Color</label>
-      <div class="custom-number-input">
-        <input id="colorPicker2" value="" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
-      </div>
-    </div>
-
-    <div class="input-container">
-      <label>Background Image</label>
-      <button id="upload1">
-        <div class="upload-btn-wrapper">
-          <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
-          <Input id="file2" type="file" accept="Image/">
-        </div>
-      </button>
-    </div>
-    <hr>
-  </div>
-
-  <div id="shapespop" class="props-popup">
-    <button class="increase" onclick="closeshapespop()" style="float: right">X</button>
-    <h1>Objects</h1>
-    <hr>
-    <h3 style="margin:1em 0;">Objects Settings</h3>
-
-    <div>
-
-      <div class="input-container">
-        <label>Object Width (cm)</label>
-        <div class="custom-number-input">
-          <button class="decrease" onclick="Osubstcan()">-</button>
-          <input min="1" placeholder="6" value="6" onchange="OcanWit(this.value)" id="objectWidth">
-          <button class="increase" onclick="Oadditioncan()">+</button>
-        </div>
-      </div>
-      <div class="input-container">
-        <label>Object Height (cm)</label>
-        <div class="custom-number-input">
-          <button class="decrease" onclick="Osubstcanhie()">-</button>
-          <input min="1" placeholder="6" value="6" onchange="Ocanhie(this.value)" id="objectHeight">
-          <button class="increase" onclick="Oadditioncanhie()">+</button>
-        </div>
-      </div>
-      <div class="input-container">
-        <label>Stroke Width</label>
-        <div class="custom-number-input" bind-value-to="strokeWidth">
-          <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
-        </div>
-      </div>
-      <div class="input-container">
-        <label for="text-lines-bg-color">Stroke Color</label>
-        <div class="custom-number-input">
-          <input id="strokeColor" value="#000000" data-jscolor="{}" size="10">
-        </div>
-      </div>
-      <div class="input-container">
-        <label for="text-lines-bg-color">Color</label>
-        <div class="custom-number-input">
-          <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <div>
-  </div>
 </body>
 <script src="js/jscolor.js"></script>
 <script src="js/jscolor.min.js"></script>

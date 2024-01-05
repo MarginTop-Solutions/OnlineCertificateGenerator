@@ -13,7 +13,6 @@ body {
   margin-left: 100px;
   width: 5%;
   border: 1px solid green;
-
 }
 
 .side3 {
@@ -31,7 +30,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 7vh;
+  height: max-content;
   color: #000;
 }
 
@@ -50,19 +49,44 @@ div.zoh0 {
   background-color: #bbb;
 }
 
-.canvas {
-  width:100%;
+.masterarea {
+  width: 100%;
   height: 100%;
-  background-color: #9f8031;
+  display: flex;
+  flex-direction: column;
 }
 
-.canvas div {
-    margin: auto;
-    height: 100%;
+.props-topbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  opacity: 0;
 }
 
-.canvas canvas {
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+.props-topbar button {
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  border: 0px;
+}
+
+.props-topbar button:hover, .props-topbar button.active {
+  background-color: #ff1f;
+}
+
+.props-topbar .custom-number-input {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+  background-color: #fff6;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.canvdiv {
+  margin: auto;
+  height: 100%;
 }
 
 div.sidebar {
@@ -70,25 +94,21 @@ div.sidebar {
   flex-direction: column;
   align-items: center;
   width: max-content;
+  background-color: #fff;
 }
 
 .sidebar button {
-  width: 64px;
-  border-radius: 10px;
-  height: 54px;
-  opacity: .55;
-  clear: both;
-  margin: 5px;
+  height: 4vh;
+  width: 4vh;
+  margin: 0.4rem;
   border: 0;
-  outline: none;
+  border-radius: 10px;
 }
 
 .sidebar button.active,
 .sidebar button:hover {
-  opacity: 1;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  box-shadow: inset 5px 0 10px 0 rgba(50, 50, 50, .1);
+  background-color: #ff1;
+  box-shadow: 5px 0 10px 0 #aa1;
 }
 
 .sidebar button img,
@@ -96,7 +116,6 @@ div.sidebar {
   width: 30px;
   height: 30px;
 }
-
 
 div.zohinpop {
   margin-left: 10px;
@@ -137,7 +156,6 @@ div.zohinpop {
 
 ul {
   list-style-type: none;
-
 }
 
 li {
@@ -302,13 +320,13 @@ span.file-name {
   justify-content: space-between;
   align-items: center;
   padding: 0 0.5rem;
-  height: 7vh;
+  height: max-content;
 }
 
 .toolbar button {
-  height:4vh;
+  height: 4vh;
   width: 4vh;
-  margin: 4px;
+  margin: 0.4rem;
   border: 0;
   border-radius: 10px;
 }
@@ -351,52 +369,15 @@ span.file-name {
 
 
 .props-popup {
-  display: none;
   padding: 1.5em 1em;
   width: 24vw;
-  margin: 2.8rem 0.5rem ;
-  margin-right: 2rem;
   text-align: center;
-  left: 10px;
-  height: 82vh;
-  overflow-y: scroll;
-  border: 1px solid #e1e1e1;
+  overflow: auto;
   background-color: #fff;
-  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-  border: 1px solid #ddd;
   transition: all .4s;
-  box-sizing: border-box;
   font-size: 1.2rem;
   color: #795100;
-  position: absolute;
 }
-
-/* .props-popup .content {
-  padding: 20px;
-  position: relative;
-  height: -webkit-fill-available;
-  height: -ms-fill-available;
-  height: fill-available;
-  height: -moz-fill-available;
-}
-
-.props-popup .content .hide-show-handler {
-  position: absolute;
-  top: calc(50% - 40px);
-  right: -42px;
-  width: 40px;
-  height: 80px;
-  background-color: #eeeeee;
-  border: 1px solid #ddd;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  cursor: pointer;
-  
-  background-image: url('/lib/caret-left.svg');
-  background-size: 10px;
-  background-repeat: no-repeat;
-  background-position: center center;
-} */
 
 .props-popup .input-container {
   display: flex;
@@ -429,7 +410,6 @@ span.file-name {
   display: flex;
   align-items: center;
   padding: 1px;
-  height: 30px;
   background-color: #fff6;
   border-radius: 6px;
   text-align: center;
@@ -469,29 +449,15 @@ span.file-name {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
-  background-color: rgb(168, 89, 89);
-  color: black;
-  text-align: center;
-  border-radius: 6px;
-  padding: 15px 0;
+  background-color: #ff16;
   position: absolute;
   z-index: 1;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.2rem;
+  width: max-content;
+  border-radius: 0.5rem;
   top: 110%;
-  left: 50%;
-  margin-left: -60px;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent white transparent;
 }
 
 .tooltip:hover .tooltiptext {

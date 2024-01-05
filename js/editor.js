@@ -466,45 +466,24 @@ canvas.uniformScaling = true;
 fabric.perfLimitSizeTotal = 0xd693a40;
 fabric.maxCacheSideLimit = 0xa7d8c0;
 
-function getTextProps() {
-  return {
-    'fill': document.getElementById("colorPicker").value,
-    'fontFamily': document.getElementById("font-family").value,
-    'fontSize': document.getElementById('text-font-size').value,
-    'fontWeight': document.getElementById("text-cmd-bold").checked ? 'bold' : '',
-    'fontStyle': document.getElementById('text-cmd-italic').checked ? 'italic' : '',
-    'underline': document.getElementById('text-cmd-underline').checked,
-    'linethrough': document.getElementById('text-cmd-linethrough').checked,
-    'overline': document.getElementById('text-cmd-overline').checked,
-    'stroke': document.getElementById('text-stroke-color').value,
-    'strokeWidth': document.getElementById('text-stroke-width').value,
-    'textBackgroundColor': document.getElementById('text-lines-bg-color').value
-  };
-}
-
 const addtext = _0x47e60d => {
   const _0x9e4222 = _0x47e60d.getCenter();
-  let props = getTextProps();
   const _0x77f313 = new fabric.IText("Tap and Type", {
-    'left': 0x32,
-    'top': 0x64,
     'left': _0x9e4222.left,
     'top': _0x9e4222.top,
     'originX': 'center',
     'originY': "center"
   });
-  _0x77f313.set(props);
-  _0x47e60d.add(_0x23d6ec);
-  _0x47e60d.centerObject(_0x23d6ec);
-  _0x47e60d.setActiveObject(_0x23d6ec);
+  _0x47e60d.add(_0x77f313);
+  _0x47e60d.centerObject(_0x77f313);
+  _0x47e60d.setActiveObject(_0x77f313);
   _0x47e60d.requestRenderAll();
 };
 const addtextarea = _0x1f3b56 => {
-  let props = getTextProps();
   const _0x301fb4 = _0x1f3b56.getCenter();
   const _0x77f313 = new fabric.Textbox("The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.", {
-    'width': 0xc8,
-    'height': 0xc8,
+    'width': cmToPx(10),
+    'fontSize': parseInt(document.getElementById("text-font-size").value),
     'left': 0x32,
     'top': 0x64,
     'left': _0x301fb4.left,
@@ -512,7 +491,6 @@ const addtextarea = _0x1f3b56 => {
     'originX': "center",
     'originY': "center"
   });
-  _0x77f313.set(props);
   _0x1f3b56.add(_0x77f313);
   _0x1f3b56.centerObject(_0x77f313);
   _0x1f3b56.setActiveObject(_0x77f313);
@@ -846,47 +824,13 @@ function substcanhie() {
   document.dispatchEvent(event);
 }
 
-radios5 = document.getElementsByName('fonttype');
-var i = 0x0;
-for (var max = radios5.length; i < max; i++) {
-  radios5[i].onclick = function () {
-    if (document.getElementById(this.id).checked == true) {
-      if (this.id == "text-cmd-bold") {
-        canvas.getActiveObject().set('fontWeight', "bold");
-      }
-      if (this.id == 'text-cmd-italic') {
-        canvas.getActiveObject().set('fontStyle', "italic");
-      }
-      if (this.id == "text-cmd-underline") {
-        canvas.getActiveObject().set("underline", true);
-        console.log(this.id);
-      }
-      if (this.id == "text-cmd-linethrough") {
-        canvas.getActiveObject().set("linethrough", true);
-      }
-      if (this.id == "text-cmd-overline") {
-        canvas.getActiveObject().set("overline", true);
-      }
-    } else {
-      if (this.id == "text-cmd-bold") {
-        canvas.getActiveObject().set("fontWeight", '');
-      }
-      if (this.id == 'text-cmd-italic') {
-        canvas.getActiveObject().set('fontStyle', '');
-      }
-      if (this.id == "text-cmd-underline") {
-        canvas.getActiveObject().set("underline", false);
-      }
-      if (this.id == 'text-cmd-linethrough') {
-        canvas.getActiveObject().set("linethrough", false);
-      }
-      if (this.id == "text-cmd-overline") {
-        canvas.getActiveObject().set('overline', false);
-      }
-    }
-    canvas.renderAll();
-  };
-};
+function toggleTextProp(prop, value, button) {
+  let _ = canvas.getActiveObject();
+  if (_.get(prop) == value) _.set(prop, typeof value == 'string' ? '' : false);
+  else _.set(prop, value);
+  canvas.renderAll();
+  button.classList.toggle('active');
+}
 
 function setActiveProps(prop, value) {
   let _o = canvas.getActiveObject();
@@ -902,11 +846,11 @@ function setActiveProps(prop, value) {
   }
 };
 
-document.getElementById("colorPicker").onchange = function () {
-  console.log(this.value);
-  setActiveProps("fill", this.value);
-  canvas.renderAll();
-};
+// document.getElementById("colorPicker").onchange = function () {
+//   console.log(this.value);
+//   setActiveProps("fill", this.value);
+//   canvas.renderAll();
+// };
 document.getElementById("font-family").onchange = function () {
   setActiveProps('fontFamily', this.value);
   canvas.renderAll();
@@ -964,11 +908,7 @@ document.getElementById("text-lines-bg-color").onchange = function () {
   setActiveProps('textBackgroundColor', this.value);
   canvas.renderAll();
 };
-document.getElementById("text-stroke-color").onchange = function () {
-  console.log(this.value);
-  setActiveProps("stroke", this.value);
-  canvas.renderAll();
-};
+
 document.getElementById("colorPicker1").onchange = function () {
   console.log(this.value);
   setActiveProps("fill", this.value);
@@ -984,27 +924,15 @@ $("#control_border").change(function () {
   setActiveProps('strokeWidth', _0x3ba1a0);
   canvas.renderAll();
 });
-var objectToSendBack;
-var objectBringToFront;
-canvas.on("selection:created", function (_0x331b48) {
-  objectToSendBack = _0x331b48.target;
-});
-canvas.on("selection:updated", function (_0x576644) {
-  objectToSendBack = _0x576644.target;
-});
+
 var sendSelectedObjectBack = function () {
   console.log(event.target);
-  canvas.sendToBack(objectToSendBack);
+  canvas.sendToBack(canvas.getActiveObject());
 };
-canvas.on('selection:created', function (_0x298ebb) {
-  objectBringToFront = _0x298ebb.target;
-});
-canvas.on("selection:updated", function (_0x5bfb79) {
-  objectBringToFront = _0x5bfb79.target;
-});
+
 var sendSelectedObjectforward = function () {
   console.log(event.target);
-  canvas.bringForward(objectBringToFront);
+  canvas.bringForward(canvas.getActiveObject());
 };
 
 function updateObjectProperty(object) {
@@ -1016,54 +944,76 @@ function updateObjectProperty(object) {
   objprop.querySelector("#colorPicker1").value = object.type === 'activeSelection' ? '#FFFFFF' : object.fill;
 }
 
+function updateTextProperty(object) {
+  if (object.fontWeight === 'bold') {
+    document.getElementById("text-cmd-bold").classList.add("active");
+  } else {
+    document.getElementById("text-cmd-bold").classList.remove("active");
+  }
+
+  if (object.fontStyle === "italic") {
+    document.getElementById("text-cmd-italic").classList.add("active");
+  } else {
+    document.getElementById("text-cmd-italic").classList.remove("active");
+  }
+
+  if (object.underline) {
+    document.getElementById("text-cmd-underline").classList.add("active");
+  } else {
+    document.getElementById("text-cmd-underline").classList.remove("active");
+  }
+
+  if (object.linethrough) {
+    document.getElementById("text-cmd-linethrough").classList.add("active");
+  } else {
+    document.getElementById("text-cmd-linethrough").classList.remove("active");
+  }
+
+  if (object.overline) {
+    document.getElementById("text-cmd-overline").classList.add("active");
+  } else {
+    document.getElementById("text-cmd-overline").classList.remove("active");
+  }
+  console.log(object.fontFamily)
+  document.getElementById("font-family").value = object.get("fontFamily");
+  document.getElementById("text-align").value = object.get("textAlign");
+  document.getElementById("text-font-size").value = object.fontSize;
+  document.getElementById("text-lines-bg-color").value = object.backgroundColor;
+}
+
+
 canvas.on("selection:cleared", function () {
-  document.getElementById("shapespop").style.display = "none";
+  /* MAYBE DO STH WITH OBJECT PROPERTY PANEL'S CONTENT */
+  document.getElementById("props-topbar").style.opacity = 0;
   document.getElementById("delete1").style.opacity = 0.5;
 })
-
-canvas.on("selection:created", onObjectSelected);
-function onObjectSelected() {
-  var _0x2c4d0f = canvas.getActiveObject().type ? canvas.getActiveObject().type : '';
-  console.log(_0x2c4d0f);
-  if (_0x2c4d0f == "i-text") {
-    document.getElementById("mydiv").style.display = "block";
-    document.getElementById("shapespop").style.display = "none";
-  } else if (_0x2c4d0f == "textbox") {
-    document.getElementById("mydiv").style.display = 'block';
-    document.getElementById("shapespop").style.display = 'none';
-  } else {
-    document.getElementById("mydiv").style.display = "none";
-    document.getElementById("shapespop").style.display = "block";
-    updateObjectProperty(canvas.getActiveObject());
-  }
-};
 
 canvas.on('object:scaling', function (e) {
   updateObjectProperty(e.target);
 });
 
-canvas.on('selection:updated', onObjectSelected);
-function onObjectSelected() {
-  var _0x33ff20 = canvas.getActiveObject().type ? canvas.getActiveObject().type : '';
-  if (_0x33ff20 == "i-text") {
-    document.getElementById("mydiv").style.display = 'block';
-    document.getElementById("shapespop").style.display = "none";
-  } else if (_0x33ff20 == 'textbox') {
-    document.getElementById('mydiv').style.display = 'block';
-    document.getElementById("shapespop").style.display = 'none';
+canvas.on('selection:updated', updateData);
+canvas.on('selection:created', updateData);
+
+function updateData() {
+  var _0x33ff20 = canvas.getActiveObject();
+
+  if (_0x33ff20.type == "i-text" || _0x33ff20.type == "textbox") {
+    document.getElementById("props-topbar").style.opacity = 1;
+    updateTextProperty(canvas.getActiveObject());
   } else {
-    document.getElementById("mydiv").style.display = "none";
-    document.getElementById("shapespop").style.display = "block";
-    updateObjectProperty(canvas.getActiveObject());
+    document.getElementById("props-topbar").style.opacity = 0;
   }
+
+  updateObjectProperty(canvas.getActiveObject());
   document.getElementById("delete1").style.opacity = 1;
-  const activeObject = _0x33ff20;
-  if (activeObject && activeObject.type === 'image') {
+  if (_0x33ff20.type === 'image') {
     // Display the size of the image while moving
     displayImageSize(activeObject);
   }
-}
-;
+  canvas.renderAll();
+};
+
 var isRedoing = false;
 var h = [];
 canvas.on("object:added", function () {
