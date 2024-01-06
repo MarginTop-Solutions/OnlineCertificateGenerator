@@ -502,8 +502,6 @@ $(".add_shape").click(function () {
   var _0x3d3178 = $(this).attr("data-rel");
 
   const props = {
-    width: cmToPx(10),
-    height: cmToPx(10),
     strokeWidth: parseFloat(document.getElementById('control_border').value),
     strokeColor: document.getElementById('strokeColor').value,
     color: "#ffffffff"
@@ -526,8 +524,8 @@ $(".add_shape").click(function () {
     switch (_0x3d3178) {
       case 'rectangle':
         var _0x44a3d6 = new fabric.Rect({
-          'width': props.width,
-          'height': props.height,
+          'width': 0xa0,
+          'height': 0x90,
           'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
@@ -544,7 +542,7 @@ $(".add_shape").click(function () {
         break;
       case "circle":
         var _0x4a46be = new fabric.Circle({
-          'radius': props.width / 2,
+          'radius': 0x60,
           'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
@@ -560,8 +558,8 @@ $(".add_shape").click(function () {
         break;
       case "ellipse":
         var _0x3382f0 = new fabric.Ellipse({
-          'rx': props.width / 2,
-          'ry': props.height / 2,
+          'rx': 0x80,
+          'ry': 0x60,
           'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
@@ -577,8 +575,8 @@ $(".add_shape").click(function () {
         break;
       case "triangle":
         var _0x52f195 = new fabric.Triangle({
-          'width': props.width,
-          'height': props.height,
+          'width': 0xc0,
+          'height': 0xa0,
           'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
@@ -594,14 +592,12 @@ $(".add_shape").click(function () {
         canvas.requestRenderAll();
         break;
       case 'hexagon':
-        var _0x5003bc = new fabric.Polygon(getPolyPoints(6, props.width / 2), {
+        var _0x5003bc = new fabric.Polygon(getPolyPoints(6, 0x60), {
           'top': 0xb4,
           'left': 0xc8,
           'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
-          'width': props.width,
-          'height': props.height,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': "center",
@@ -614,7 +610,7 @@ $(".add_shape").click(function () {
         canvas.requestRenderAll();
         break;
       case "star":
-        var _0xb80ac1 = _0x4ecddb(0x5, 0x32, 0x19);
+        var _0xb80ac1 = _0x4ecddb(0x5, 0x70, 0x30);
         var _0x5930c7 = new fabric.Polygon(_0xb80ac1, {
           'fill': props.color,
           'stroke': props.strokeColor,
@@ -632,39 +628,14 @@ $(".add_shape").click(function () {
         canvas.centerObject(_0x5930c7);
         canvas.setActiveObject(_0x5930c7);
         canvas.requestRenderAll();
-        ;
-        function _0x4ecddb(_0x2f9d2b, _0x2286ee, _0xcd5872) {
-          var _0x3a79f7 = Math.PI / _0x2f9d2b;
-          var _0x3885b1 = [];
-          var _0x21841e = 0x0;
-          for (var _0x33a2cb = 0x0; _0x33a2cb < _0x2f9d2b; _0x33a2cb++) {
-            var _0x5a0571 = _0x2286ee + Math.cos(_0x21841e) * _0x2286ee;
-            var _0x14a61a = _0x2286ee + Math.sin(_0x21841e) * _0x2286ee;
-            _0x3885b1.push({
-              'x': _0x5a0571,
-              'y': _0x14a61a
-            });
-            _0x21841e += _0x3a79f7;
-            _0x5a0571 = _0x2286ee + Math.cos(_0x21841e) * _0xcd5872;
-            _0x14a61a = _0x2286ee + Math.sin(_0x21841e) * _0xcd5872;
-            _0x3885b1.push({
-              'x': _0x5a0571,
-              'y': _0x14a61a
-            });
-            _0x21841e += _0x3a79f7;
-          }
-          return _0x3885b1;
-        }
         break;
       case "pentagon":
-        var _0x5003bc = new fabric.Polygon(getPolyPoints(5, props.width / 2), {
+        var _0x5003bc = new fabric.Polygon(getPolyPoints(5, 0x70), {
           'top': 0xb4,
           'left': 0xc8,
           'fill': props.color,
           'stroke': props.strokeColor,
           'strokeWidth': props.strokeWidth,
-          'width': props.width,
-          'height': props.height,
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': "center",
@@ -681,8 +652,8 @@ $(".add_shape").click(function () {
           'left': 0x64,
           'top': 0x32,
           'fill': props.color,
-          'width': props.width,
-          'height': props.width,
+          'width': 0x80,
+          'height': 0x80,
           'stroke': props.strokeColor,
           'angle': 0x2d,
           'left': _0x2a714e.left,
@@ -715,6 +686,30 @@ $(".add_shape").click(function () {
     }
   }
 });
+
+function _0x4ecddb(_0x2f9d2b, _0x2286ee, _0xcd5872) {
+  var _0x3a79f7 = Math.PI / _0x2f9d2b;
+  var _0x3885b1 = [];
+  var _0x21841e = 0x0;
+  for (var _0x33a2cb = 0x0; _0x33a2cb < _0x2f9d2b; _0x33a2cb++) {
+    var _0x5a0571 = _0x2286ee + Math.cos(_0x21841e) * _0x2286ee;
+    var _0x14a61a = _0x2286ee + Math.sin(_0x21841e) * _0x2286ee;
+    _0x3885b1.push({
+      'x': _0x5a0571,
+      'y': _0x14a61a
+    });
+    _0x21841e += _0x3a79f7;
+    _0x5a0571 = _0x2286ee + Math.cos(_0x21841e) * _0xcd5872;
+    _0x14a61a = _0x2286ee + Math.sin(_0x21841e) * _0xcd5872;
+    _0x3885b1.push({
+      'x': _0x5a0571,
+      'y': _0x14a61a
+    });
+    _0x21841e += _0x3a79f7;
+  }
+  return _0x3885b1;
+}
+
 function renderIcon(_0x121cbf) {
   return function _0x19644c(_0x2e009a, _0x36834b, _0x238a6c, _0x1c1034, _0x4a430b) {
     var _0x203844 = this.cornerSize;
