@@ -483,8 +483,8 @@ const addtextarea = _0x1f3b56 => {
     'width': cmToPx(10),
     'fontSize': parseInt(document.getElementById("text-font-size").value),
     'fill': '#000000ff',
-    'stroke' : '#000000ff',
-    'strokeWidth' : 0,
+    'stroke': '#000000ff',
+    'strokeWidth': 0,
     'left': 0x32,
     'top': 0x64,
     'left': _0x301fb4.left,
@@ -502,11 +502,11 @@ $(".add_shape").click(function () {
   var _0x3d3178 = $(this).attr("data-rel");
 
   const props = {
-    width: cmToPx(parseFloat(document.getElementById("objectWidth").value)),
-    height: cmToPx(parseFloat(document.getElementById('objectHeight').value)),
+    width: cmToPx(10),
+    height: cmToPx(10),
     strokeWidth: parseFloat(document.getElementById('control_border').value),
     strokeColor: document.getElementById('strokeColor').value,
-    color: document.getElementById('colorPicker1').value
+    color: "#ffffffff"
   };
 
   function getPolyPoints(n, r) {
