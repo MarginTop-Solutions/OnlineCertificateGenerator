@@ -316,8 +316,6 @@ function deleteSelectedObjectsFromCanvas() {
   } else {
     canvas.remove(_0x4e29f9);
   }
-  document.getElementById("mydiv").style.display = "none";
-  document.getElementById("shapespop").style.display = "none";
   canvas.discardActiveObject();
   canvas.requestRenderAll();
 }
@@ -427,11 +425,11 @@ var jsonFileInput = document.getElementById('jsonFileInput');
 jsonFileInput.addEventListener('change', handleFileSelect, false);
 
 const canvas = new fabric.Canvas('zbcanvas', {
-  'width': cmToPx(30),
-  'height': cmToPx(24),
+  'width': cmToPx(20),
+  'height': cmToPx(15),
   'borderColor': 'black',
   'border': 0x3,
-  'backgroundColor': "white",
+  'backgroundColor': "#00000000",
   'preserveObjectStacking': true,
   'selection': true
 });
@@ -484,6 +482,9 @@ const addtextarea = _0x1f3b56 => {
   const _0x77f313 = new fabric.Textbox("The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.", {
     'width': cmToPx(10),
     'fontSize': parseInt(document.getElementById("text-font-size").value),
+    'fill': '#000000ff',
+    'stroke' : '#000000ff',
+    'strokeWidth' : 0,
     'left': 0x32,
     'top': 0x64,
     'left': _0x301fb4.left,
@@ -852,6 +853,7 @@ function setActiveProps(prop, value) {
 //   canvas.renderAll();
 // };
 document.getElementById("font-family").onchange = function () {
+  console.log(this.value);
   setActiveProps('fontFamily', this.value);
   canvas.renderAll();
 };
@@ -905,7 +907,7 @@ document.getElementById('text-align').onchange = function () {
 };
 document.getElementById("text-lines-bg-color").onchange = function () {
   console.log(this.value);
-  setActiveProps('textBackgroundColor', this.value);
+  setActiveProps('backgroundColor', this.value);
   canvas.renderAll();
 };
 
@@ -937,9 +939,11 @@ var sendSelectedObjectforward = function () {
 
 function updateObjectProperty(object) {
   var objprop = document.getElementById("shapespop");
+  console.log(object);
   objprop.querySelector("#objectWidth").value = pxToCm(object.width * object.scaleX).toFixed(2);
   objprop.querySelector("#objectHeight").value = pxToCm(object.height * object.scaleY).toFixed(2);
-  objprop.querySelector("#control_border").value = object.strokeWidth;
+  objprop.querySelector("#control_border").value = object.strokeWidth || 1;
+
   objprop.querySelector("#strokeColor").value = object.stroke === "black" ? "#000000" : (object.type === 'activeSelection' ? '#000000' : object.stroke);
   objprop.querySelector("#colorPicker1").value = object.type === 'activeSelection' ? '#FFFFFF' : object.fill;
 }
@@ -974,11 +978,11 @@ function updateTextProperty(object) {
   } else {
     document.getElementById("text-cmd-overline").classList.remove("active");
   }
-  console.log(object.fontFamily)
+  console.log(object.backgroundColor);
   document.getElementById("font-family").value = object.get("fontFamily");
   document.getElementById("text-align").value = object.get("textAlign");
   document.getElementById("text-font-size").value = object.fontSize;
-  document.getElementById("text-lines-bg-color").value = object.backgroundColor;
+  document.getElementById("text-lines-bg-color").value = object.backgroundColor || "#00000000";
 }
 
 

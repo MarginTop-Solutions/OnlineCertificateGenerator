@@ -234,11 +234,11 @@
 
           <div class="custom-number-input">
             <button class="decrease" onclick="txtwidminus(this.val)">-</button>
-            <input min="1" value="18" id="text-font-size" style="padding: 0.3rem; width: 4rem; text-align: center;">
+            <input min="1" value="18" id="text-font-size">
             <button class="increase" onclick="txtwidplus(this.val)">+</button>
           </div>
 
-          <input id="text-lines-bg-color" value="#ffffff" data-jscolor="{}" id="text-color" size="10">
+          <input id="text-lines-bg-color" value="#00000000" data-jscolor="{}" id="text-color" size="8">
 
         </div>
       </div>
@@ -271,19 +271,19 @@
         <div class="input-container">
           <label>Stroke Width</label>
           <div class="custom-number-input" bind-value-to="strokeWidth">
-            <input min="1" value="1" style="width: 100px !important;" type="range" id="control_border">
+            <input min="0" value="1" style="width: 100px !important;" type="range" id="control_border">
           </div>
         </div>
         <div class="input-container">
           <label for="text-lines-bg-color">Stroke Color</label>
           <div class="custom-number-input">
-            <input id="strokeColor" value="#000000" data-jscolor="{}" size="10">
+            <input id="strokeColor" value="#000000ff" data-jscolor="{}">
           </div>
         </div>
         <div class="input-container">
           <label for="text-lines-bg-color">Color</label>
           <div class="custom-number-input">
-            <input id="colorPicker1" value="#ffffff" data-jscolor="{}" id="text-color">
+            <input id="colorPicker1" value="#ffffffff" data-jscolor="{}">
           </div>
         </div>
 
@@ -315,7 +315,7 @@
       <div class="input-container">
         <label>Background Color</label>
         <div class="custom-number-input">
-          <input id="colorPicker2" value="" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
+          <input id="colorPicker2" value="#00000000" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
         </div>
       </div>
 
@@ -341,7 +341,7 @@
 </body>
 <script src="js/jscolor.js"></script>
 <script src="js/jscolor.min.js"></script>
-<script src="js/editor-pop.js"></script>
+<script src="js/editor-pop-deofscuate.js"></script>
 <script src="js/editor.js"></script>
 
 </html>
