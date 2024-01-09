@@ -339,6 +339,7 @@ function ungroupObjects() {
   canvas.getActiveObject().toActiveSelection();
   canvas.requestRenderAll();
 }
+
 const imgAdded = _0x40de00 => {
   console.log(_0x40de00);
   const _0x481683 = document.getElementById("myImg");
@@ -674,6 +675,7 @@ $(".add_shape").click(function () {
           'left': _0x2a714e.left,
           'top': _0x2a714e.top,
           'originX': 'center',
+          'fill': '#00000000',
           'originY': 'center',
           'hasControls': true,
           'strokeUniform': true
@@ -916,19 +918,25 @@ document.getElementById("strokeColor").onchange = function () {
   setActiveProps("stroke", this.value);
   canvas.renderAll();
 };
+
 $("#control_border").change(function () {
   var _0x3ba1a0 = parseInt($(this).val());
   setActiveProps('strokeWidth', _0x3ba1a0);
   canvas.renderAll();
 });
 
+function OstrokeC(del) {
+  var bordr = document.getElementById("control_border");
+  bordr.value = parseInt(bordr.value) + del;
+  setActiveProps('strokeWidth', parseInt(bordr.value));
+  canvas.renderAll();
+}
+
 var sendSelectedObjectBack = function () {
-  console.log(event.target);
-  canvas.sendToBack(canvas.getActiveObject());
+  canvas.sendBackwards(canvas.getActiveObject());
 };
 
 var sendSelectedObjectforward = function () {
-  console.log(event.target);
   canvas.bringForward(canvas.getActiveObject());
 };
 
@@ -985,6 +993,8 @@ canvas.on("selection:cleared", function () {
   /* MAYBE DO STH WITH OBJECT PROPERTY PANEL'S CONTENT */
   document.getElementById("props-topbar").style.opacity = 0;
   document.getElementById("delete1").style.opacity = 0.5;
+  document.getElementById("shapespop").style.display = "none";
+  document.getElementById("myform").style.display = "block";
 })
 
 canvas.on('object:scaling', function (e) {
@@ -1006,6 +1016,8 @@ function updateData() {
 
   updateObjectProperty(canvas.getActiveObject());
   document.getElementById("delete1").style.opacity = 1;
+  document.getElementById("shapespop").style.display = "block";
+  document.getElementById("myform").style.display = "none";
   if (_0x33ff20.type === 'image') {
     // Display the size of the image while moving
     displayImageSize(activeObject);

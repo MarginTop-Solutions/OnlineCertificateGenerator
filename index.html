@@ -127,7 +127,7 @@
         </a>
       </div>
       <div class="tooltip">
-        <span class="tooltiptext">Settings</span>
+        <span class="tooltiptext">Certificate Properties</span>
         <button id="setting1" onclick="openForm()">
           <img src="Icons/gear.svg" alt="Bootstrap">
         </button>
@@ -142,13 +142,6 @@
         <span class="tooltiptext">Clear Canvas</span>
         <button id="clear1" onclick="clearCanvas(canvas, svgState)">
           <img src="Icons/x-lg.svg" alt="Bootstrap">
-        </button>
-      </div>
-
-      <div class="tooltip">
-        <span class="tooltiptext">Clear Background</span>
-        <button onclick="clearbgImage()">
-          <img src="Icons/bag-x.svg" alt="Bootstrap">
         </button>
       </div>
 
@@ -249,8 +242,9 @@
 
     </div>
 
-    <div id="shapespop" class="props-popup">
+    <div id="shapespop" class="props-popup" style="display: none;">
       <h3 style="margin:1em 0;">Objects Settings</h3>
+      <hr>
       <div>
         <div class="input-container">
           <label>Object Width (cm)</label>
@@ -270,8 +264,10 @@
         </div>
         <div class="input-container">
           <label>Stroke Width</label>
-          <div class="custom-number-input" bind-value-to="strokeWidth">
-            <input min="0" value="1" style="width: 100px !important;" type="range" id="control_border">
+          <div class="custom-number-input">
+            <button class="decrease" onclick="OstrokeC(-1)">-</button>
+            <input type="number" min="0" placeholder="6" value="6" id="control_border">
+            <button class="increase" onclick="OstrokeC(1)">+</button>
           </div>
         </div>
         <div class="input-container">
@@ -286,16 +282,16 @@
             <input id="colorPicker1" value="#ffffffff" data-jscolor="{}">
           </div>
         </div>
-
       </div>
+      <hr>
     </div>
 
-    <div class="props-popup" id="myform" style="display: none;">
-      <button onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button>
-      <h3>Canvas Properties</h3>
+    <div class="props-popup" id="myform">
+      <!-- <button onclick="closeForm()" style="float: right ;margin-top: 10px;">X</button> -->
+      <h3>Certificate Properties</h3>
       <hr>
       <div class="input-container">
-        <label>Canvas Width(cm)</label>
+        <label>Certificate Width(cm)</label>
         <div class="custom-number-input">
           <button onclick="substcan()">-</button>
           <input min="1" placeholder="30" value="30" onchange="updtcanw(this.value)" id="enterCanvasWidth">
@@ -304,7 +300,7 @@
       </div>
 
       <div class="input-container">
-        <label>Canvas Height(cm)</label>
+        <label>Certificate Height(cm)</label>
         <div class="custom-number-input">
           <button onclick="substcanhie()">-</button>
           <input min="1" placeholder="24" value="24" onchange="updtcanh(this.value)" id="enterCanvasHeight">
@@ -315,7 +311,8 @@
       <div class="input-container">
         <label>Background Color</label>
         <div class="custom-number-input">
-          <input id="colorPicker2" value="#00000000" data-jscolor="{}" id="text-color" size="10" style="border-radius: 4px;">
+          <input id="colorPicker2" value="#00000000" data-jscolor="{}" id="text-color" size="10"
+            style="border-radius: 4px;">
         </div>
       </div>
 
@@ -323,9 +320,16 @@
         <label>Background Image</label>
         <button id="upload1">
           <div class="upload-btn-wrapper">
-            <img src="Icons/upload.svg" alt="Bootstrap" width="32" height="32">
+            <img src="Icons/upload.svg" alt="Bootstrap">
             <Input id="file2" type="file" accept="Image/">
           </div>
+        </button>
+      </div>
+
+      <div class="input-container">
+        <label>Clear Background</label>
+        <button onclick="clearbgImage()">
+          <img src="Icons/x-lg.svg" alt="Bootstrap">
         </button>
       </div>
       <hr>
